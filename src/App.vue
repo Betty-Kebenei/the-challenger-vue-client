@@ -14,13 +14,14 @@
       </ul>
     </div>
     <main>
-      <h1>Main content</h1>
+      <view-month />
     </main>
   </div>
 </template>
 
 <script>
 import axios from "axios"; 
+import ViewAMonth from "./components/ViewAMonth";
 
 export default {
   name: 'app',
@@ -28,6 +29,10 @@ export default {
     return {
       months: []
     }
+  },
+
+  components: {
+    'view-month': ViewAMonth,
   },
 
   mounted () {
