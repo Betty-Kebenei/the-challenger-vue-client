@@ -5,15 +5,17 @@
     </header>
     <div class="leftNav">
       <ul  v-for="month in months">
-        <li :key="month._id">{{ month.fromDate }} to {{ month.toDate }}</li>
+        <li 
+          :key="month._id">
+          {{ month.fromDate | moment("MMMM Do YYYY") }}
+          <strong>to</strong>
+          {{ month.toDate | moment("MMMM Do YYYY") }}
+          </li>
       </ul>
     </div>
     <main>
       <h1>Main content</h1>
     </main>
-    <footer>
-      <small> Authored by Betty </small>
-    </footer>
   </div>
 </template>
 
