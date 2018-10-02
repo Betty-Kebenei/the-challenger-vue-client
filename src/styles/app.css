@@ -29,15 +29,21 @@ header img {
   padding-left: 20px;
 }
 
-leftNav, main {
+.leftNav, main {
   min-height: 100vw;
   margin: 0;
   padding: 15px;
 }
 
-leftNav {
+.leftNav {
   max-width: 30%;
   float: left;
+}
+
+.leftNav ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 1.5rem;
 }
 
 main {
