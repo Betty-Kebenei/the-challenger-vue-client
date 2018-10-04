@@ -17,16 +17,10 @@ form {
     margin-bottom: 6px;
 }
 
-input[type=button] {
-    float: left;
-    padding: 10px;
-    margin-top: 5px;
-    background-color: orangered;
-}
-
 input[type=submit] {
+    position: relative;
     padding: 10px;
-    float: right;
+    left: 70%;
     margin-top: 5px;
     background-color:#4CAF50;
 }

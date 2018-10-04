@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form @submit.prevent="postMonth">
         <h1> Month Form </h1>
         <div class="row">
             <div class="col-label">
@@ -17,14 +17,33 @@
                 <input type="date" id="to-date" v-model="toDate" />
             </div>
         </div>
-        <input type="button" value="Cancel" />
         <input type="submit" value="Submit" />
     </form>
 </template>
 
 <script>
+import axios from "axios"; 
+
 export default {
-  name: 'monthForm'
+  name: 'monthForm',
+  data () {
+      return {
+          fromDate: '',
+          toDate: ''
+      }
+  },
+
+  methods: {
+      postMonth() {
+          axios
+          .post('http://localhost:3001/api/v1/month-form', {
+              fromDate: this.fromDate,
+              toDate: this.toDate
+          })
+          .then(() => {})
+          .catch(() => {})
+      }
+  }
 }
 </script>
 
