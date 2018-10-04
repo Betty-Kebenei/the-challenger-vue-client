@@ -4,38 +4,59 @@
       <img src="./assets/logo.png">
     </header>
     <div class="leftNav">
-      <ul  v-for="month in months">
-        <li 
-          :key="month._id">
-          {{ month.fromDate | moment("MMMM Do YYYY") }}
-          <strong>to</strong>
-          {{ month.toDate | moment("MMMM Do YYYY") }}
+      <button
+        @click="showMonthForm = !showMonthForm"
+      >Add Month Form</button>
+      <div v-show="showMonthForm">
+        <month-form />
+      </div>
+      <div>
+        <h1>Months</h1>
+        <ul  v-for="month in months">
+          <li :key="month._id"  v-on:click="fetchId(month._id)">
+            {{ month.fromDate | moment("MMM Do") }}
+            <strong>to</strong>
+            {{ month.toDate | moment("MMM Do") }}
           </li>
-      </ul>
+        </ul>
+      </div>
     </div>
     <main>
-      <h1>Main content</h1>
+      <view-month :monthId="monthId" />
     </main>
   </div>
 </template>
 
 <script>
 import axios from "axios"; 
+import ViewAMonth from "./components/ViewAMonth";
+import MonthForm from "./components/MonthForm";
 
 export default {
   name: 'app',
   data () {
     return {
-      months: []
+      months: [],
+      monthId: '',
+      showMonthForm: false
     }
+  },
+
+  components: {
+    'view-month': ViewAMonth,
+    'month-form': MonthForm
   },
 
   mounted () {
     this.fetchMonths();
-    console.log(this.months)
   },
 
   methods: {
+    fetchId(monthId) {
+      this.monthId = monthId;
+      console.log(this.monthId)
+    }, 
+
     fetchMonths () {
       axios
         .get('http://localhost:3001/api/v1/month-form')
@@ -43,7 +64,7 @@ export default {
             this.months = response.data;
             })
         .catch(error => { this.errors.push(error) })
-    }
+    },
   }
 }
 </script>
