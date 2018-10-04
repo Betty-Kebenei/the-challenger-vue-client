@@ -1,7 +1,7 @@
 <template>
     <div>
         <button class="daily-data-button" @click="showDailyForm = !showDailyForm">Add Daily Data</button>
-        <form v-show="showDailyForm">
+        <form v-show="showDailyForm" @submit.prevent="postDailyData" >
             <h1> Daily Data Form </h1>
             <div class="row">
                 <div class="col-label">
@@ -81,6 +81,8 @@
             <input type="submit" value="Submit" />
             <input type="button" value="Cancel" @click="showDailyForm = false" />
         </form>
+
+        {{ monthId }}
     </div>
 </template>
 
@@ -99,9 +101,29 @@ export default {
       prayer: false,
       smr: false,
     }
+  },
+  props: {
+      monthId: String,
+  },
+
+  methods: {
+      postDailyData() {
+        axios
+        .post(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`,
+        { 
+            morningChapters: this.morningChapters,
+            otherChapters: this.otherChapters,
+            riserTime: this.riserTime,
+            notes: this.notes,
+            prayer: this.prayer,
+            smr: this.smr
+        })
+        .then((response) => {console.log(this.response)})
+        .catch(error => { this.errors.push(error); console.log(this.response) })
+      }
   }
 }
 </script>
 
-<style src="../styles/viewAMonth.css">
+<style scoped src="../styles/viewAMonth.css">
 </style>
