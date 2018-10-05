@@ -138,8 +138,12 @@ export default {
             prayer: this.prayer,
             smr: this.smr
         })
-        .then((response) => {console.log(this.response)})
-        .catch(error => { this.errors.push(error); console.log(this.response) })
+        .then((response) => {
+            this.$snack.success('Daily data Successfully added!');
+        })
+        .catch(error => { 
+            this.$snack.danger(error.response.data);
+         })
       },
 
       fetchDailyData(monthId) {

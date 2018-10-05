@@ -40,8 +40,12 @@ export default {
               fromDate: this.fromDate,
               toDate: this.toDate
           })
-          .then(() => {})
-          .catch(() => {})
+          .then((response) => {
+              this.$snack.success('Month Form Successfully added!');
+              })
+          .catch((error) => {
+              this.$snack.danger(error.response.data);
+          })
       }
   }
 }

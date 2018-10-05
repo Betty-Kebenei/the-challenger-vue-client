@@ -13,7 +13,8 @@
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
     "vue": "^2.5.11",
-    "vue-moment": "^4.0.0"
+    "vue-moment": "^4.0.0",
+    "vue-snack": "^0.1.4"
   },
   "browserslist": [
     "> 1%",
