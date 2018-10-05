@@ -21,8 +21,8 @@
         </ul>
       </div>
     </div>
-    <main>
-      <view-month :monthId="monthId" />
+    <main v-if="showCharts">
+      <view-month :month="monthId" />
     </main>
   </div>
 </template>
@@ -38,7 +38,8 @@ export default {
     return {
       months: [],
       monthId: '',
-      showMonthForm: false
+      showMonthForm: false,
+      showCharts: false
     }
   },
 
@@ -54,7 +55,7 @@ export default {
   methods: {
     fetchId(monthId) {
       this.monthId = monthId;
-      console.log(this.monthId)
+      this.showCharts = true;
     }, 
 
     fetchMonths () {
@@ -62,6 +63,7 @@ export default {
         .get('http://localhost:3001/api/v1/month-form')
         .then(response => { 
             this.months = response.data;
+            this.months.length > 0 && this.fetchId(response.data[0]._id)
             })
         .catch(error => { this.errors.push(error) })
     },
