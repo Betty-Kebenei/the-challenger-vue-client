@@ -43,7 +43,14 @@ header img {
 .leftNav ul {
   list-style-type: none;
   padding: 0;
-  font-size: 1.5rem;
+  margin: 2px;
+}
+
+.leftNav ul li {
+  padding: 20px;
+  font-size: 1.3em;
+  background-color: #E0EDF4;
+  color: #3E5252;
 }
 
 main {

@@ -14,11 +14,15 @@
                 <label for="to-date">To Date</label>
             </div>
             <div class="col-input">
-                <input type="date" id="to-date" v-model="toDate" />
+                <input
+                    type="text"
+                    id="to-date"
+                    disabled
+                    v-model="toDate" />
             </div>
         </div>
         <input type="submit" value="Submit" />
-    </form>
+    </form>  
 </template>
 
 <script>
@@ -30,6 +34,22 @@ export default {
       return {
           fromDate: '',
           toDate: ''
+      }
+  },
+
+  watch: {
+      fromDate() {
+        var date = new Date(this.fromDate);
+        var newdate = new Date(date);
+
+        newdate.setDate(newdate.getDate() + 27);
+        
+        var dd = newdate.getDate();
+        var mm = newdate.getMonth() + 1;
+        var y = newdate.getFullYear();
+
+        var someFormattedDate = mm + '/' + dd + '/' + y;
+        this.toDate = someFormattedDate;    
       }
   },
 
@@ -46,7 +66,7 @@ export default {
           .catch((error) => {
               this.$snack.danger(error.response.data);
           })
-      }
+      },
   }
 }
 </script>
