@@ -85,7 +85,7 @@
         <section v-if="draw">
             <h1>CHARTS AND TABLES</H1>
             <bar-chart
-                :month="monthId"
+                :month="month"
                 :mchapters="morningChapters"
                 :ochapters="otherChapters"
             />
@@ -119,11 +119,11 @@ export default {
         }
     },
     props: {
-        monthId: String,
+        month: String,
     },
 
     mounted() {
-        this.fetchDailyData(this.monthId);
+        this.fetchDailyData(this.month);
     },
 
     methods: {
