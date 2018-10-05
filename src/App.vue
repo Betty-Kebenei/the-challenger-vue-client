@@ -21,7 +21,7 @@
         </ul>
       </div>
     </div>
-    <main>
+    <main v-if="monthId">
       <view-month :monthId="monthId" />
     </main>
   </div>
@@ -54,7 +54,6 @@ export default {
   methods: {
     fetchId(monthId) {
       this.monthId = monthId;
-      console.log(this.monthId)
     }, 
 
     fetchMonths () {

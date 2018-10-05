@@ -1,7 +1,7 @@
 <template>
     <div>
         <button class="daily-data-button" @click="showDailyForm = !showDailyForm">Add Daily Data</button>
-        <form v-show="showDailyForm" @submit.prevent="postDailyData" >
+        <form v-show="showDailyForm" @submit.prevent="postDailyData(monthId)" >
             <h1> Daily Data Form </h1>
             <div class="row">
                 <div class="col-label">
@@ -82,32 +82,52 @@
             <input type="button" value="Cancel" @click="showDailyForm = false" />
         </form>
 
-        {{ monthId }}
+        <section v-if="draw">
+            <h1>CHARTS AND TABLES</H1>
+            <bar-chart
+                :month="monthId"
+                :mchapters="morningChapters"
+                :ochapters="otherChapters"
+            />
+        </section>
     </div>
 </template>
 
 <script>
 import axios from "axios"; 
+import BarChart from "./BarChart.vue";
 
 export default {
-  name: 'viewAMonth',
-  data () {
-    return {
-      showDailyForm: false,
-      morningChapters: 0,
-      otherChapters: 0,
-      riserTime: '',
-      notes: false,
-      prayer: false,
-      smr: false,
-    }
-  },
-  props: {
-      monthId: String,
-  },
+    name: 'viewAMonth',
+    components: {
+        'bar-chart': BarChart, 
+    },
 
-  methods: {
-      postDailyData() {
+    data () {
+        return {
+        showDailyForm: false,
+        morningChapters: 0,
+        otherChapters: 0,
+        riserTime: '',
+        notes: false,
+        prayer: false,
+        smr: false,
+        morningChapters: [],
+        otherChapters: [],
+        riserTime: [],
+        draw: false
+        }
+    },
+    props: {
+        monthId: String,
+    },
+
+    mounted() {
+        this.fetchDailyData(this.monthId);
+    },
+
+    methods: {
+      postDailyData(monthId) {
         axios
         .post(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`,
         { 
@@ -120,7 +140,21 @@ export default {
         })
         .then((response) => {console.log(this.response)})
         .catch(error => { this.errors.push(error); console.log(this.response) })
-      }
+      },
+
+      fetchDailyData(monthId) {
+        axios
+        .get(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`)
+        .then(response => {
+            response.data.map(data => {
+                this.morningChapters.push(data.chaptersMorning);
+                this.otherChapters.push(data.chaptersOthers);
+                this.draw = true;
+            });
+        })
+        .catch(() => {})
+    }
+
   }
 }
 </script>

@@ -62,3 +62,7 @@ fieldset {
 .choice {
     display: inline;
 }
+
+section {
+    padding-right: 50px;
+}
