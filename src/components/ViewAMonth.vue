@@ -89,6 +89,13 @@
                 :mchapters="morningChapters"
                 :ochapters="otherChapters"
             />
+            <line-graph
+                :month="month"
+                :time="riserTime"
+            />
+            <faithfulness-table
+                :month="month"
+            />
         </section>
     </div>
 </template>
@@ -96,11 +103,15 @@
 <script>
 import axios from "axios"; 
 import BarChart from "./BarChart.vue";
+import LineGraph from "./LineGraph.vue";
+import FaithfulnessTable from "./FaithfulnessTable.vue";
 
 export default {
     name: 'viewAMonth',
     components: {
         'bar-chart': BarChart, 
+        'line-graph': LineGraph,
+        'faithfulness-table': FaithfulnessTable
     },
 
     data () {
@@ -153,6 +164,7 @@ export default {
             response.data.map(data => {
                 this.morningChapters.push(data.chaptersMorning);
                 this.otherChapters.push(data.chaptersOthers);
+                this.riserTime.push(data.riserTime);
                 this.draw = true;
             });
         })
