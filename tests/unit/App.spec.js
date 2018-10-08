@@ -1,5 +1,6 @@
 import App from '../../src/App.vue';
 import {shallowMount} from '@vue/test-utils';
+import sinon from 'sinon';
 
 describe('App', () => {
     it('should have a component named app', () => {

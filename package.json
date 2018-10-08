@@ -10,14 +10,14 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config webpack.config.js --require tests/setup.js tests/**/*.spec.js"
   },
-  "nyc":{
-    "include":[
+  "nyc": {
+    "include": [
       "src/*.vue",
       "src/*.js",
       "src/components/*.vue"
     ],
-    "instrument":false,
-    "sourceMap":false
+    "instrument": false,
+    "sourceMap": false
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -47,6 +47,7 @@
     "mocha": "^5.2.0",
     "mocha-webpack": "^1.1.0",
     "nyc": "^13.0.1",
+    "sinon": "^6.3.5",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
