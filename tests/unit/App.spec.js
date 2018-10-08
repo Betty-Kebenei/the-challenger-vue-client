@@ -1,6 +1,13 @@
 import App from '../../src/App.vue';
 import {shallowMount} from '@vue/test-utils';
 
+describe('App', () => {
+    it('should have a component named app', () => {
+        const wrapper = shallowMount(App);
+        expect(wrapper.name()).toEqual('app');
+    });
+});
+
 describe('App template', () => {
     const wrapper = shallowMount(App);
     it('should render a header with a logo', () => { 
