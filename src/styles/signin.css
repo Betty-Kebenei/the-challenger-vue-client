@@ -1,0 +1,40 @@
+#signup-form {
+    position: relative;
+    top: 200px;
+}
+
+form {
+    box-shadow: 0 0 1px rgba(0,0,0,0.25);
+    padding: 3%;
+    width: 40%;
+    margin: auto;
+}
+
+form h2 {
+    text-align: center;
+}
+
+.col-label {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+    font-size: 1.5rem;
+}
+
+.col-input {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+input[type=submit] {
+    background-color:#4CAF50;
+}

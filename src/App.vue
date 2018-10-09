@@ -1,29 +1,37 @@
 <template>
   <div id="app">
-    <header>
-      <img src="./assets/logo.png">
-    </header>
-    <div class="leftNav">
-      <button
-        @click="showMonthForm = !showMonthForm"
-      >Add Month Form</button>
-      <div v-show="showMonthForm">
-        <month-form />
+    <div v-if="step == 2">
+      <header>
+        <img src="./assets/logo.png">
+      </header>
+      <div class="leftNav">
+        <button
+          @click="showMonthForm = !showMonthForm"
+        >Add Month Form</button>
+        <div v-show="showMonthForm">
+          <month-form />
+        </div>
+        <div>
+          <h1>Months</h1>
+          <ul  v-for="month in months">
+            <li :key="month._id"  v-on:click="fetchId(month._id)">
+              {{ month.fromDate | moment("MMM Do") }}
+              <strong>to</strong>
+              {{ month.toDate | moment("MMM Do") }}
+            </li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h1>Months</h1>
-        <ul  v-for="month in months">
-          <li :key="month._id"  v-on:click="fetchId(month._id)">
-            {{ month.fromDate | moment("MMM Do") }}
-            <strong>to</strong>
-            {{ month.toDate | moment("MMM Do") }}
-          </li>
-        </ul>
-      </div>
+      <main v-if="showCharts">
+        <view-month :month="monthId" />
+      </main>
     </div>
-    <main v-if="showCharts">
-      <view-month :month="monthId" />
-    </main>
+    <div v-if="step === 0">
+      <signup />
+    </div>
+    <div v-if="step === 1">
+      <signin />
+    </div>
   </div>
 </template>
 
@@ -31,6 +39,8 @@
 import axios from "axios"; 
 import ViewAMonth from "./components/ViewAMonth";
 import MonthForm from "./components/MonthForm";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
 
 export default {
   name: 'app',
@@ -39,13 +49,16 @@ export default {
       months: [],
       monthId: '',
       showMonthForm: false,
-      showCharts: false
+      showCharts: false,
+      step: 1,
     }
   },
 
   components: {
     'view-month': ViewAMonth,
-    'month-form': MonthForm
+    'month-form': MonthForm,
+    'signup': SignUp,
+    'signin': SignIn
   },
 
   mounted () {
