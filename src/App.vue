@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="step == 1">
+    <div v-if="step == 2">
       <header>
         <img src="./assets/logo.png">
       </header>
@@ -29,6 +29,9 @@
     <div v-if="step === 0">
       <signup />
     </div>
+    <div v-if="step === 1">
+      <signin />
+    </div>
   </div>
 </template>
 
@@ -36,7 +39,8 @@
 import axios from "axios"; 
 import ViewAMonth from "./components/ViewAMonth";
 import MonthForm from "./components/MonthForm";
-import Signup from "./components/Signup";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
 
 export default {
   name: 'app',
@@ -46,14 +50,15 @@ export default {
       monthId: '',
       showMonthForm: false,
       showCharts: false,
-      step: 0,
+      step: 1,
     }
   },
 
   components: {
     'view-month': ViewAMonth,
     'month-form': MonthForm,
-    'signup': Signup
+    'signup': SignUp,
+    'signin': SignIn
   },
 
   mounted () {
