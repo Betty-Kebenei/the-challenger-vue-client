@@ -1,6 +1,5 @@
 import App from '../../src/App.vue';
 import {shallowMount} from '@vue/test-utils';
-import moxios from 'moxios';
 
 describe('App', () => {
     it('should have a component named app', () => {
