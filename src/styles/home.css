@@ -1,0 +1,30 @@
+.leftNav, main {
+  min-height: 100vw;
+  margin: 0;
+  padding: 15px;
+}
+
+.leftNav {
+  max-width: 20%;
+  float: left;
+}
+
+.leftNav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 2px;
+}
+
+.leftNav ul li {
+  padding: 20px;
+  font-size: 1.3em;
+  background-color: #E0EDF4;
+  color: #3E5252;
+}
+
+main {
+  width: 80%;
+  float: right;
+  text-align: left;
+}
+

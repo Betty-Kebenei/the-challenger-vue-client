@@ -1,85 +1,24 @@
 <template>
   <div id="app">
-    <div v-if="step == 2">
-      <header>
-        <img src="./assets/logo.png">
-      </header>
-      <div class="leftNav">
-        <button
-          @click="showMonthForm = !showMonthForm"
-        >Add Month Form</button>
-        <div v-show="showMonthForm">
-          <month-form />
-        </div>
-        <div>
-          <h1>Months</h1>
-          <ul  v-for="month in months">
-            <li :key="month._id"  v-on:click="fetchId(month._id)">
-              {{ month.fromDate | moment("MMM Do") }}
-              <strong>to</strong>
-              {{ month.toDate | moment("MMM Do") }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <main v-if="showCharts">
-        <view-month :month="monthId" />
-      </main>
-    </div>
-    <div v-if="step === 0">
-      <signup />
-    </div>
-    <div v-if="step === 1">
-      <signin />
-    </div>
+   <header>
+      <img src="./assets/logo.png">
+      <nav>
+        <router-link to="/signup">SIGNUP</router-link>
+        <router-link to="/signin">SIGNIN</router-link>
+        <router-link to="/">HOME</router-link>
+      </nav>
+    </header>
+    <router-view />
   </div>
 </template>
 
 <script>
-import axios from "axios"; 
-import ViewAMonth from "./components/ViewAMonth";
-import MonthForm from "./components/MonthForm";
-import SignUp from "./components/SignUp";
-import SignIn from "./components/SignIn";
+import Home from './components/home';
 
 export default {
   name: 'app',
-  data () {
-    return {
-      months: [],
-      monthId: '',
-      showMonthForm: false,
-      showCharts: false,
-      step: 1,
-    }
-  },
-
   components: {
-    'view-month': ViewAMonth,
-    'month-form': MonthForm,
-    'signup': SignUp,
-    'signin': SignIn
-  },
-
-  mounted () {
-    this.fetchMonths();
-  },
-
-  methods: {
-    fetchId(monthId) {
-      this.monthId = monthId;
-      this.showCharts = true;
-    }, 
-
-    fetchMonths () {
-      axios
-        .get('http://localhost:3001/api/v1/month-form')
-        .then(response => { 
-            this.months = response.data;
-            this.months.length > 0 && this.fetchId(response.data[0]._id)
-            })
-        .catch(error => { this.errors.push(error) })
-    },
+    'home': Home,
   }
 }
 </script>
