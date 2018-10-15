@@ -26,7 +26,8 @@
 </template>
 
 <script>
-import axios from "axios"; 
+import axios from "axios";
+import { EventBus } from "../event-bus.js"; 
 
 export default {
   name: 'monthForm',
@@ -48,7 +49,7 @@ export default {
         var mm = newdate.getMonth() + 1;
         var y = newdate.getFullYear();
 
-        var someFormattedDate = mm + '/' + dd + '/' + y;
+        var someFormattedDate = mm + '-' + dd + '-' + y;
         this.toDate = someFormattedDate;    
       }
   },
@@ -61,7 +62,8 @@ export default {
               toDate: this.toDate
           })
           .then((response) => {
-              this.$snack.success('Month Form Successfully added!');
+              this.$snack.success(response.data.message);
+              EventBus.$emit("added-form", response.data.month);
               })
           .catch((error) => {
               this.$snack.danger(error.response.data);

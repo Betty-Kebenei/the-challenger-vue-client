@@ -85,15 +85,21 @@
 import axios from "axios";
 export default {
     name: 'dailyDataForm',
-    morningChapters: 0,
-    otherChapters: 0,
-    riserTime: '',
-    notes: false,
-    prayer: false,
-    smr: false,
+    data () {
+        return {
+            morningChapters: 0,
+            otherChapters: 0,
+            riserTime: '',
+            notes: false,
+            prayer: false,
+            smr: false,
+        }
+    },
+    
     props: {
         month: String,
     },
+    
     methods: {
       postDailyData(monthId) {
         axios

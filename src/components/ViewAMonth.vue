@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>Details for {{ month.fromDate }} to {{ month.toDate }} month form </h1>
         <button class="daily-data-button" @click="showDailyForm = !showDailyForm">Add Daily Data</button>
         <section v-show="showDailyForm">
             <daily-data-form :month="month"/>
@@ -48,11 +49,11 @@ export default {
         }
     },
     props: {
-        month: String,
+        month: Object,
     },
 
     mounted() {
-        this.fetchDailyData(this.month);
+        this.fetchDailyData(this.month._id);
     },
 
     methods: {
