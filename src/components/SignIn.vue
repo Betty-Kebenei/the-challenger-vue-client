@@ -1,7 +1,7 @@
 <template>
     <div id="signup-form">
-        <form>
-            <h2>Fill in the form to sign in.</h2>
+        <h1>Login.</h1>
+        <form> 
             <div class="row">
                 <div class="col-label">
                     <label for="username">Username | Email</label>
@@ -18,9 +18,24 @@
                     <input type="password" id="password" v-model="password" />
                 </div>
             </div>
-            <input type="submit" value="Signin" />
+            <div class="check"> 
+                <label for="remember">Remember me</label>
+                <input type="checkbox" id="remember" value="remember" />
+            </div>
+            <div class="forgot-password"> 
+                <a href="#">Forgot password?</a>
+            </div>
+            <br />
+            <div class="signin"><input type="submit" value="Login" /></div>
         </form>
-        
+        <br />
+        <h2>OR</h2>
+        <h3>Login with a social media account</h3>
+        <div class="social-media-icons">
+            <a class="facebook"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }" />Facebook</a>
+            <a class="twitter"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'twitter' }" />Twitter</a>
+            <a class="google"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'google' }"/>Google</a>
+        </div>
     </div>
 </template>
 

@@ -1,17 +1,22 @@
 #signup-form {
     position: relative;
     top: 200px;
+    box-shadow: 0 0 1px rgba(0,0,0,0.25);
+    width: 60%;
+    margin: auto;
+    padding-bottom: 5%;
+}
+
+#signup-form h1 {
+    text-align: center;
+    padding-top: 5%;
 }
 
 form {
     box-shadow: 0 0 1px rgba(0,0,0,0.25);
     padding: 3%;
-    width: 40%;
+    width: 80%;
     margin: auto;
-}
-
-form h2 {
-    text-align: center;
 }
 
 .col-label {
@@ -28,13 +33,63 @@ form h2 {
 }
 
 input {
-    width: 100%;
+    width: 90%;
     padding: 15px;
     font-size: 1.5rem;
     border-radius: 5px;
     margin: 10px;
 }
 
+.signin {
+    text-align: center;
+}
+
 input[type=submit] {
     background-color:#4CAF50;
+    width: 50%;
+    text-align: center;
+}
+
+.check, .forgot-password {
+    text-align: center;
+}
+
+.check label, .check input {
+    display: inline;
+}
+
+.check input{
+    margin: 0;
+    padding: 0;
+    left: 0;
+}
+
+form a {
+    color: rgb(116, 5, 5);
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+.social-media-icons {
+    text-align: center;
+}
+
+.facebook, .twitter, .google {
+    color: white;
+    padding: 5px;
+    border-radius: 5%;
+}
+
+.facebook {
+    background-color: rgb(6, 6, 131);
+}
+
+.twitter {
+    background-color: lightblue;
+}
+
+.google {
+    background-color: rgb(194, 17, 17);
 }
