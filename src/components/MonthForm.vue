@@ -49,7 +49,7 @@ export default {
         var mm = newdate.getMonth() + 1;
         var y = newdate.getFullYear();
 
-        var someFormattedDate = mm + '/' + dd + '/' + y;
+        var someFormattedDate = mm + '-' + dd + '-' + y;
         this.toDate = someFormattedDate;    
       }
   },
