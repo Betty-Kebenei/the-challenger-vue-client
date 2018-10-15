@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="postDailyData(month)" >
+    <form @submit.prevent="postDailyData(month._id)" >
         <h1> Daily Data Form </h1>
         <div class="row">
             <div class="col-label">
@@ -22,7 +22,7 @@
                 <label for="riser-time">Riser Time</label>
             </div>
             <div class="col-input">
-                <input type="date-time" id="riser-time" v-model="riserTime" />
+                <input type="datetime-local" id="riser-time" v-model="riserTime" />
             </div>
         </div>
         <div class="row">    
@@ -97,16 +97,16 @@ export default {
     },
     
     props: {
-        month: String,
+        month: Object,
     },
-    
+
     methods: {
       postDailyData(monthId) {
         axios
         .post(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`,
         { 
-            morningChapters: this.morningChapters,
-            otherChapters: this.otherChapters,
+            chaptersMorning: this.morningChapters,
+            chaptersOthers: this.otherChapters,
             riserTime: this.riserTime,
             notes: this.notes,
             prayer: this.prayer,
