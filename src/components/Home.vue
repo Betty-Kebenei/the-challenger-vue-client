@@ -40,7 +40,8 @@ export default {
       months: [],
       monthId: '',
       showMonthForm: false,
-      error: ''
+      error: '',
+      showCharts: false,
     }
   },
 
