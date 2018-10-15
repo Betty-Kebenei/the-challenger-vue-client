@@ -10,7 +10,7 @@
     <div v-if="months.length > 0">
         <h1>Months</h1>
         <ul  v-for="month in months">
-        <li :key="month._id"  v-on:click="fetchId(month._id)">
+        <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
             {{ month.fromDate | moment("MMM Do") }}
             <strong>to</strong>
             {{ month.toDate | moment("MMM Do") }}
@@ -22,7 +22,7 @@
     </div>
     </div>
     <main v-if="showCharts">
-     <view-month :month="monthId" />
+     <view-month :month="month" />
     </main>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
   data () {
     return {
       months: [],
-      monthId: '',
+      month: {},
       showMonthForm: false,
       error: '',
       showCharts: false,
@@ -62,8 +62,8 @@ export default {
   },
 
   methods: {
-    fetchId(monthId) {
-      this.monthId = monthId;
+    fetchMonthDetails(month) {
+      this.month = month;
       this.showCharts = true;
     }, 
 
@@ -73,7 +73,7 @@ export default {
         .then(response => { 
             if(response.data.length > 0) {
                 this.months = response.data;
-                this.months.length > 0 && this.fetchId(response.data[0]._id);
+                this.months.length > 0 && this.fetchMonthDetails(response.data[0]);
             } else if(response.data.message){
                 this.error = response.data.message;
             } else {
