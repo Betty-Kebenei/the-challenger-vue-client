@@ -5,7 +5,7 @@
         @click="showMonthForm = !showMonthForm"
     >Add Month Form</button>
     <div v-show="showMonthForm">
-        <month-form />
+        <month-form :months="months"/>
     </div>
     <div v-if="months.length > 0">
         <h1>Months</h1>
@@ -29,6 +29,7 @@
 
 <script>
 import axios from "axios"; 
+import { EventBus } from "../event-bus.js";
 import ViewAMonth from "./ViewAMonth";
 import MonthForm from "./MonthForm";
 
@@ -46,6 +47,13 @@ export default {
   components: {
     'view-month': ViewAMonth,
     'month-form': MonthForm,
+  },
+
+  created(){
+      EventBus.$on("added-form", month => {
+      this.months.push(month);
+      this.showMonthForm = false;
+    });
   },
 
   mounted () {
