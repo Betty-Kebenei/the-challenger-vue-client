@@ -8,6 +8,8 @@ import VueSnackbar from 'vue-snack';
 Vue.use(vueMoment);
 Vue.use(VueSnackbar, {});
 
+Vue.config.productionTip = false
+
 new Vue({
   router,
   el: '#app',
