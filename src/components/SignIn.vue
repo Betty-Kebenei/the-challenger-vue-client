@@ -1,10 +1,10 @@
 <template>
     <div id="signin-form">
         <h1>Login.</h1>
-        <form> 
+        <form @submit.prevent="login"> 
             <div class="row">
                 <div class="col-label">
-                    <label for="username">Username | Email</label>
+                    <label for="username">Email</label>
                 </div>
                 <div class="col-input">
                     <input type="text" placeholder="Enter your email or username" id="username" v-model="username" />
@@ -40,8 +40,34 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'signin',
+
+    data() {
+        return {
+            email: '',
+            password: '',
+        }
+    },
+
+    methods: {
+        login(){
+            axios
+            .post('http://localhost:3001/api/v1/signin', {
+                email: this.email,
+                password: this.password
+            })
+            .then(response => {
+                this.$snack.success(response.data.message);
+                this.$router.push({name: 'home'})
+            })
+            .catch((error) => {
+                this.$snack.danger(error.response.data);
+            });
+        },
+    },
 }
 </script>
 
