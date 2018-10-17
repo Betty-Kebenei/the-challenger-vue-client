@@ -12,38 +12,31 @@ export default {
     name: 'lineGraph',
     props: {
       month: String,
-      time: Array,
+      dailies: Array,
     },
 
     mounted() {
-        this.createLineGraph('line-chart', this.time);
-        console.log(this.time)
+        this.createLineGraph('line-chart', this.dailies);
     },
 
     methods: {
-      createLineGraph(chartId, risertime){
+      createLineGraph(chartId, dailyData){
             const ctx = document.getElementById(chartId);
+            console.log(dailyData[3])
             const barChart = new Chart(ctx , {
                 type: 'line',
                 data: {
-                    labels: ['Jul 1', 'Jul 2', 'Jul 3', 'Jul 4', 'Jul 5'],
+                    labels: dailyData[0],
                     datasets: [
                         {
-                            data: risertime,
-                            backgroundColor: [
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                            ],
-                            borderColor: [
-                                '#36495d',
-                                '#36495d',
-                                '#36495d',
-                                '#36495d'
-                            ],
+                            label: 'Early riser line graph.',
+                            data: dailyData[3],
+                            backgroundColor: 'transparent',
+                            pointBorderColor: 'blue',
+                            pointStyle: 'rectRounded',
+                            pointBackgroundColor: 'blue',
+                            borderColor: 'orange',
                         },
-                        
                     ]
                 },
                 options: {
@@ -52,7 +45,12 @@ export default {
                     scales: {
                         yAxes: [{
                             type: 'time',
-                            distribution: 'series'
+                            time: {
+                                parser: 'h:mm',
+                                max: '7:0',
+                                min: '4:0',
+                                unitStepSize: .25,
+                            }
                         }]
                     }
                 }

@@ -9,12 +9,11 @@
             <h1>CHARTS AND TABLES</H1>
             <bar-chart
                 :month="month"
-                :mchapters="morningChapters"
-                :ochapters="otherChapters"
+                :dailies="dailies"
             />
             <line-graph
                 :month="month"
-                :time="riserTime"
+                :dailies="dailies"
             />
             <faithfulness-table
                 :month="month"
@@ -42,9 +41,11 @@ export default {
     data () {
         return {
         showDailyForm: false,
+        dailies: [],
         morningChapters: [],
         otherChapters: [],
         riserTime: [],
+        dates: [],
         draw: false,
         }
     },
@@ -62,11 +63,17 @@ export default {
         .get(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`)
         .then(response => {
             response.data.map(data => {
+                this.dates.push(data.riserTime.split('T')[0]);
                 this.morningChapters.push(data.chaptersMorning);
                 this.otherChapters.push(data.chaptersOthers);
-                this.riserTime.push(data.riserTime);
+                this.riserTime.push(data.riserTime.split('T')[1]);
                 this.draw = true;
             });
+            this.dailies.push(
+                this.dates,
+                this.morningChapters,
+                this.otherChapters,
+                this.riserTime); 
         })
         .catch(() => {})
     }
