@@ -15,6 +15,7 @@
             />
             <faithfulness-table
                 :month="month"
+                :dailies="dailies"
             />
         </section>
     </div>
@@ -44,6 +45,9 @@ export default {
         otherChapters: [],
         riserTime: [],
         dates: [],
+        notes: [],
+        prayer: [],
+        smr: [],
         draw: false,
         }
     },
@@ -65,13 +69,20 @@ export default {
                 this.morningChapters.push(data.chaptersMorning);
                 this.otherChapters.push(data.chaptersOthers);
                 this.riserTime.push(data.riserTime.split('T')[1]);
+                this.notes.push(data.notes);
+                this.prayer.push(data.prayer);
+                this.smr.push(data.smr);
                 this.draw = true;
             });
             this.dailies.push(
                 this.dates,
                 this.morningChapters,
                 this.otherChapters,
-                this.riserTime); 
+                this.riserTime,
+                this.notes,
+                this.prayer,
+                this.smr
+                ); 
         })
         .catch(() => {})
     }
