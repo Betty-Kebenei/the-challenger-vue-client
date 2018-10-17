@@ -8,16 +8,14 @@
         <section v-if="draw">
             <h1>CHARTS AND TABLES</H1>
             <bar-chart
-                :month="month"
-                :mchapters="morningChapters"
-                :ochapters="otherChapters"
+                :dailies="dailies"
             />
             <line-graph
-                :month="month"
-                :time="riserTime"
+                :dailies="dailies"
             />
             <faithfulness-table
                 :month="month"
+                :dailies="dailies"
             />
         </section>
     </div>
@@ -42,9 +40,14 @@ export default {
     data () {
         return {
         showDailyForm: false,
+        dailies: [],
         morningChapters: [],
         otherChapters: [],
         riserTime: [],
+        dates: [],
+        notes: [],
+        prayer: [],
+        smr: [],
         draw: false,
         }
     },
@@ -62,11 +65,24 @@ export default {
         .get(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`)
         .then(response => {
             response.data.map(data => {
+                this.dates.push(data.riserTime.split('T')[0]);
                 this.morningChapters.push(data.chaptersMorning);
                 this.otherChapters.push(data.chaptersOthers);
-                this.riserTime.push(data.riserTime);
+                this.riserTime.push(data.riserTime.split('T')[1]);
+                this.notes.push(data.notes);
+                this.prayer.push(data.prayer);
+                this.smr.push(data.smr);
                 this.draw = true;
             });
+            this.dailies.push(
+                this.dates,
+                this.morningChapters,
+                this.otherChapters,
+                this.riserTime,
+                this.notes,
+                this.prayer,
+                this.smr
+                ); 
         })
         .catch(() => {})
     }

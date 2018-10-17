@@ -11,56 +11,31 @@ import Chart from 'chart.js';
 export default {
     name: 'barChart',
     props: {
-      month: String,
-      mchapters: Array,
-      ochapters: Array
+      dailies: Array
     },
 
     mounted() {
-        this.createBarChart('bar-chart', this.mchapters, this.ochapters);
+        this.createBarChart('bar-chart', this.dailies);
     },
 
     methods: {
-      createBarChart(chartId, morningChapters, otherChapters){
+      createBarChart(chartId, dailyData){
             const ctx = document.getElementById(chartId);
             const barChart = new Chart(ctx , {
                 type: 'bar',
                 data: {
-                    labels: ['Jul 1', 'Jul 2', 'Jul 3', 'Jul 4', 'Jul 5'],
+                    labels: dailyData[0],
                     datasets: [
                         {
                             label: 'Number of chapter read in the morning.',
-                            data: morningChapters,
-                            backgroundColor: [
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                            ],
-                            borderColor: [
-                                '#36495d',
-                                '#36495d',
-                                '#36495d',
-                                '#36495d'
-                            ],
+                            data: dailyData[1],
+                            backgroundColor: 'rgba(0,0,255, .7)', 
                         },
                         {
                             label: 'Number of chapter read other time in the day.',
-                            data: otherChapters,
-                            backgroundColor: [
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                                'rgba(54,73,93,.5)',
-                            ],
-                            borderColor: [
-                                '#36495d',
-                                '#36495d',
-                                '#36495d',
-                                '#36495d'
-                            ],
-                        }
-                        
+                            data: dailyData[2],
+                            backgroundColor: 'rgba(54,73,93,.5)',
+                        } 
                     ]
                 },
                 options: {

@@ -1,7 +1,7 @@
 <template>
     <div id="signup-form">
-        <form>
-            <h2>Fill in the form to sign up.</h2>
+        <h1>Register.</h1>
+        <form @submit.prevent="register">
             <div class="row">
                 <div class="col-label">
                     <label for="username">Username</label>
@@ -34,14 +34,43 @@
                     <input type="password" id="confirm-password" v-model="confirmPassword" />
                 </div>
             </div>
-            <input type="submit" value="signup" />
+            <div class="signup"><input type="submit" value="signup" /></div>
         </form>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'signup',
+
+    data() {
+        return {
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        }
+    },
+
+    methods: {
+        register(){
+            axios
+            .post('http://localhost:3001/api/v1/signup', {
+                username: this.username,
+                email: this.email,
+                password: this.password
+            })
+            .then(response => {
+                this.$snack.success(response.data.message);
+                this.$router.push({name: 'home'})
+            })
+            .catch((error) => {
+                this.$snack.danger(error.response.data);
+            });
+        },
+    },
 }
 </script>
 
