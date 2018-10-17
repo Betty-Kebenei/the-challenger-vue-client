@@ -1,17 +1,22 @@
 #signup-form {
     position: relative;
     top: 200px;
+    box-shadow: 0 0 1px rgba(0,0,0,0.25);
+    width: 60%;
+    margin: auto;
+    padding-bottom: 5%;
+}
+
+#signup-form h1 {
+    text-align: center;
+    padding-top: 5%;
 }
 
 form {
     box-shadow: 0 0 1px rgba(0,0,0,0.25);
-    padding: 3%;
-    width: 40%;
+    padding: 5%;
+    width: 80%;
     margin: auto;
-}
-
-form h2 {
-    text-align: center;
 }
 
 .col-label {
@@ -35,6 +40,12 @@ input {
     margin: 10px;
 }
 
+.signup {
+    text-align: center;
+}
+
 input[type=submit] {
     background-color:#4CAF50;
+    width: 50%;
+    text-align: center;
 }
