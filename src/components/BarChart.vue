@@ -11,7 +11,6 @@ import Chart from 'chart.js';
 export default {
     name: 'barChart',
     props: {
-      month: String,
       dailies: Array
     },
 

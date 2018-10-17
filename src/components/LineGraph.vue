@@ -11,7 +11,6 @@ import Chart from 'chart.js';
 export default {
     name: 'lineGraph',
     props: {
-      month: String,
       dailies: Array,
     },
 
@@ -22,7 +21,6 @@ export default {
     methods: {
       createLineGraph(chartId, dailyData){
             const ctx = document.getElementById(chartId);
-            console.log(dailyData[3])
             const barChart = new Chart(ctx , {
                 type: 'line',
                 data: {

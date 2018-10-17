@@ -8,11 +8,9 @@
         <section v-if="draw">
             <h1>CHARTS AND TABLES</H1>
             <bar-chart
-                :month="month"
                 :dailies="dailies"
             />
             <line-graph
-                :month="month"
                 :dailies="dailies"
             />
             <faithfulness-table
