@@ -9,9 +9,12 @@
                 <div class="col-input">
                     <input 
                         type="text" 
-                        id="username" 
-                        v-model="username" 
+                        id="username"
+                        name="username" 
+                        v-model="username"
+                        v-validate="'alpha|min:3'" 
                     />
+                    <span>{{ errors.first('username') }}</span>
                 </div>
             </div>
             <div class="row">
@@ -22,10 +25,10 @@
                     <input 
                         type="email" 
                         id="email" 
-                        v-model="email" 
-                        required 
+                        v-model="email"  
                     />
                 </div>
+               
             </div>
             <div class="row">
                 <div class="col-label">
@@ -78,6 +81,8 @@ import axios from 'axios';
 export default {
     name: 'signup',
 
+    directives: { focus: focus },
+
     data() {
         return {
             username: '',
@@ -85,6 +90,7 @@ export default {
             password: '',
             confirmPassword: '',
             passwordMatchingErrors: [],
+            focused: false,
         }
     },
 
