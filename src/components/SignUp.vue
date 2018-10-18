@@ -12,7 +12,7 @@
                         id="username"
                         name="username" 
                         v-model="username"
-                        v-validate="'alpha|min:3'" 
+                        v-validate="'alpha_num|min:3'" 
                     />
                     <span>{{ errors.first('username') }}</span>
                 </div>
