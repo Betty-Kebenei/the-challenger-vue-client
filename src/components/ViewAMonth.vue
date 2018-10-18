@@ -1,23 +1,32 @@
 <template>
     <div>
         <h1>Details for {{ month.fromDate }} to {{ month.toDate }} month form </h1>
-        <button class="daily-data-button" @click="showDailyForm = !showDailyForm">Add Daily Data</button>
-        <section v-show="showDailyForm">
-            <daily-data-form :month="month"/>
-        </section>
-        <section v-if="draw">
-            <h1>CHARTS AND TABLES</H1>
-            <bar-chart
-                :dailies="dailies"
-            />
-            <line-graph
-                :dailies="dailies"
-            />
-            <faithfulness-table
-                :month="month"
-                :dailies="dailies"
-            />
-        </section>
+        
+        <div class="tabs-component">
+            <tabs class="tabs-component-tabs">
+                <tab class="tabs-component-tab" name="Add Daily Data">
+                    <daily-data-form :month="month"/>
+                </tab>
+                <tab class="tabs-component-tab" name="Charts">
+                    <section v-if="draw">
+                        <bar-chart
+                            :dailies="dailies"
+                        />
+                        <line-graph
+                            :dailies="dailies"
+                        />
+                    </section>
+                </tab>
+                <tab class="tabs-component-tab" name="Tables">
+                    <section v-if="draw">
+                        <faithfulness-table
+                            :month="month"
+                            :dailies="dailies"
+                        />
+                    </section>
+                </tab>
+            </tabs>
+        </div>
     </div>
 </template>
 

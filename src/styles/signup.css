@@ -53,3 +53,13 @@ input[type=submit] {
 p {
     color: rgb(110, 5, 5);
 }
+
+span {
+    color: red;
+}
+
+.required-field:after{
+    content:"*";
+    font-weight:bold;
+    color: red;
+}

@@ -1,6 +1,6 @@
 <template>
     <div id="signup-form">
-        <h1>Register.</h1>
+        <h1>Register</h1>
         <form @submit.prevent="register">
             <div class="row">
                 <div class="col-label">
@@ -9,49 +9,64 @@
                 <div class="col-input">
                     <input 
                         type="text" 
-                        id="username" 
-                        v-model="username" 
+                        id="username"
+                        name="username" 
+                        placeholder="username e.g some@78"
+                        v-model="username"
+                        v-validate="'alpha_num|min:3'" 
                     />
+                    <span>{{ errors.first('username') }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-label">
-                    <label for="email">Email</label>
+                    <label for="email" class="required-field">Email</label>
                 </div>
                 <div class="col-input">
                     <input 
                         type="email" 
                         id="email" 
-                        v-model="email" 
-                        required 
+                        name="email"
+                        placeholder="email e.g example@someorg.com"
+                        v-validate="'required|email'"
+                        v-model="email"  
                     />
+                    <span>{{ errors.first('email') }}</span>
                 </div>
+               
             </div>
             <div class="row">
                 <div class="col-label">
-                    <label for="password">Password</label>
+                    <label for="password" class="required-field">Password</label>
                 </div>
                 <div class="col-input">
                     <input 
                         type="password" 
-                        id="password" 
+                        id="password"
+                        name="password" 
+                        placeholder="Password"
+                        v-validate="'required|min:8|verify_password'"
+                        ref="password"
                         v-model="password" 
-                        required
                     />
+                    <span>{{ errors.first('password') }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-label">
-                    <label for="confirm-password">Confirm Password</label>
+                    <label for="confirm-password" class="required-field">Confirm Password</label>
                 </div>
                 <div class="col-input">
                     <input 
                         type="password" 
                         id="confirm-password" 
-                        v-model="confirmPassword" 
-                        required 
+                        placeholder="Password Again"
+                        name="password_confirmation"
+                        v-validate="'required|confirmed:password'"
+                        data-vv-as="password"
+                        v-model="confirmPassword"  
                     />
-                    <p v-for="i in passwordMatchingErrors">{{i}}</p>
+                    <span>{{ errors.first('password_confirmation') }}</span>
                 </div>
 
             </div>
@@ -59,7 +74,13 @@
                 <input 
                     type="submit" 
                     value="signup" 
-                    :disabled="passwordMatchingErrors.length > 0 && errors.length > 0" 
+                    :disabled=
+                        "
+                        !email || 
+                        !password || 
+                        !confirmPassword || 
+                        passwordMatchingErrors.length > 0 
+                        " 
                 />
             </div>
         </form>
@@ -72,6 +93,8 @@ import axios from 'axios';
 export default {
     name: 'signup',
 
+    directives: { focus: focus },
+
     data() {
         return {
             username: '',
@@ -79,7 +102,7 @@ export default {
             password: '',
             confirmPassword: '',
             passwordMatchingErrors: [],
-            errors: []
+            focused: false,
         }
     },
 

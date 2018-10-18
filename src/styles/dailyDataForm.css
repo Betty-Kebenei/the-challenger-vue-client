@@ -61,3 +61,9 @@ fieldset {
 section {
     padding-right: 50px;
 }
+
+.required-field:after{
+    content:"*";
+    font-weight:bold;
+    color: red;
+}
