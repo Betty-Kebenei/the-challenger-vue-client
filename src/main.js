@@ -15,6 +15,14 @@ Vue.use(vueMoment);
 Vue.use(VueSnackbar, {});
 Vue.use(VeeValidate);
 
+VeeValidate.Validator.extend('verify_password', {
+  getMessage: field => `The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc)`,
+  validate: value => {
+      var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+      return strongRegex.test(value);
+  }
+});
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false

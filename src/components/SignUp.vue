@@ -40,10 +40,14 @@
                 <div class="col-input">
                     <input 
                         type="password" 
-                        id="password" 
+                        id="password"
+                        name="password" 
+                        placeholder="Password"
+                        v-validate="'required|min:8|verify_password'"
+                        ref="password"
                         v-model="password" 
-                        required
                     />
+                    <span>{{ errors.first('password') }}</span>
                 </div>
             </div>
             <div class="row">
@@ -54,10 +58,13 @@
                     <input 
                         type="password" 
                         id="confirm-password" 
-                        v-model="confirmPassword" 
-                        required 
+                        placeholder="Password Again"
+                        name="password_confirmation"
+                        v-validate="'required|confirmed:password'"
+                        data-vv-as="password"
+                        v-model="confirmPassword"  
                     />
-                    <p v-for="i in passwordMatchingErrors">{{i}}</p>
+                     <span>{{ errors.first('password_confirmation') }}</span>
                 </div>
 
             </div>
