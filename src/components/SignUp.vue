@@ -1,6 +1,6 @@
 <template>
     <div id="signup-form">
-        <h1>Register.</h1>
+        <h1>Register</h1>
         <form @submit.prevent="register">
             <div class="row">
                 <div class="col-label">
@@ -11,6 +11,7 @@
                         type="text" 
                         id="username"
                         name="username" 
+                        placeholder="username e.g some@78"
                         v-model="username"
                         v-validate="'alpha_num|min:3'" 
                     />
@@ -26,6 +27,7 @@
                         type="email" 
                         id="email" 
                         name="email"
+                        placeholder="email e.g example@someorg.com"
                         v-validate="'required|email'"
                         v-model="email"  
                     />
