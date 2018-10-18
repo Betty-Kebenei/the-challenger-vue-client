@@ -49,3 +49,7 @@ input[type=submit] {
     width: 50%;
     text-align: center;
 }
+
+p {
+    color: rgb(110, 5, 5);
+}

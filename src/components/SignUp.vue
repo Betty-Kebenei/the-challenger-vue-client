@@ -7,7 +7,11 @@
                     <label for="username">Username</label>
                 </div>
                 <div class="col-input">
-                    <input type="text" id="username" v-model="username" />
+                    <input 
+                        type="text" 
+                        id="username" 
+                        v-model="username" 
+                    />
                 </div>
             </div>
             <div class="row">
@@ -15,7 +19,12 @@
                     <label for="email">Email</label>
                 </div>
                 <div class="col-input">
-                    <input type="email" id="email" v-model="email" />
+                    <input 
+                        type="email" 
+                        id="email" 
+                        v-model="email" 
+                        required 
+                    />
                 </div>
             </div>
             <div class="row">
@@ -23,7 +32,12 @@
                     <label for="password">Password</label>
                 </div>
                 <div class="col-input">
-                    <input type="password" id="password" v-model="password" />
+                    <input 
+                        type="password" 
+                        id="password" 
+                        v-model="password" 
+                        required
+                    />
                 </div>
             </div>
             <div class="row">
@@ -31,10 +45,23 @@
                     <label for="confirm-password">Confirm Password</label>
                 </div>
                 <div class="col-input">
-                    <input type="password" id="confirm-password" v-model="confirmPassword" />
+                    <input 
+                        type="password" 
+                        id="confirm-password" 
+                        v-model="confirmPassword" 
+                        required 
+                    />
+                    <p v-for="i in passwordMatchingErrors">{{i}}</p>
                 </div>
+
             </div>
-            <div class="signup"><input type="submit" value="signup" /></div>
+            <div class="signup">
+                <input 
+                    type="submit" 
+                    value="signup" 
+                    :disabled="passwordMatchingErrors.length > 0 && errors.length > 0" 
+                />
+            </div>
         </form>
     </div>
 </template>
@@ -50,8 +77,35 @@ export default {
             username: '',
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            passwordMatchingErrors: [],
+            errors: []
         }
+    },
+
+    watch: {
+        confirmPassword() {
+            if(!confirmPassword){
+               this.errors.push('Confirm password required!') 
+            } else if(this.password !== this.confirmPassword){
+                if(this.passwordMatchingErrors) {this.passwordMatchingErrors.pop()};
+                this.passwordMatchingErrors.push('Password does not match!');
+            } else if(this.confirmPassword === ''){
+               this.passwordMatchingErrors.pop(); 
+            } else{
+                this.passwordMatchingErrors.pop();
+            }
+        },
+        email() {
+            if(!email){
+                this.errors.push('Email required!')
+            }
+        },
+        password(){
+            if(!password){
+                this.errors.push('Password required!')
+            }
+        },
     },
 
     methods: {
