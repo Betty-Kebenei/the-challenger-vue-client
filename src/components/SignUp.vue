@@ -25,8 +25,11 @@
                     <input 
                         type="email" 
                         id="email" 
+                        name="email"
+                        v-validate="'required|email'"
                         v-model="email"  
                     />
+                    <span>{{ errors.first('email') }}</span>
                 </div>
                
             </div>
