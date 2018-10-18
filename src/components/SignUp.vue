@@ -20,7 +20,7 @@
             </div>
             <div class="row">
                 <div class="col-label">
-                    <label for="email">Email</label>
+                    <label for="email" class="required-field">Email</label>
                 </div>
                 <div class="col-input">
                     <input 
@@ -37,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="col-label">
-                    <label for="password">Password</label>
+                    <label for="password" class="required-field">Password</label>
                 </div>
                 <div class="col-input">
                     <input 
@@ -54,7 +54,7 @@
             </div>
             <div class="row">
                 <div class="col-label">
-                    <label for="confirm-password">Confirm Password</label>
+                    <label for="confirm-password" class="required-field">Confirm Password</label>
                 </div>
                 <div class="col-input">
                     <input 

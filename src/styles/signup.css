@@ -57,3 +57,9 @@ p {
 span {
     color: red;
 }
+
+.required-field:after{
+    content:"*";
+    font-weight:bold;
+    color: red;
+}

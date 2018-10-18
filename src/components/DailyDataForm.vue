@@ -3,7 +3,7 @@
         <h1> Daily Data Form </h1>
         <div class="row">
             <div class="col-label">
-                <label for="morning-chapters">Chapters Read (Morning)</label>
+                <label for="morning-chapters" class="required-field">Chapters Read (Morning)</label>
             </div>
             <div class="col-input">
                 <input type="number" id="morning-chapters" v-model="morningChapters" />
@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-label">
-                <label for="other-chapters">Chapters Read (Others)</label>
+                <label for="other-chapters" class="required-field">Chapters Read (Others)</label>
             </div>
             <div class="col-input">
                 <input type="number" id="other-chapters" v-model="otherChapters" />
@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-label">
-                <label for="riser-time">Riser Time</label>
+                <label for="riser-time" class="required-field">Riser Time</label>
             </div>
             <div class="col-input">
                 <input type="datetime-local" id="riser-time" v-model="riserTime" />
@@ -28,7 +28,7 @@
         <div class="row">    
             <fieldset>
                 <div class="col-label">
-                    <legend>Notes</legend> 
+                    <legend class="required-field">Notes</legend> 
                 </div>
                 <div class="col-input">
                     <label class="choice">
@@ -45,7 +45,7 @@
         <div class="row">
             <fieldset>
                 <div class="col-label">
-                    <legend>Prayer</legend> 
+                    <legend class="required-field">Prayer</legend> 
                 </div>
                 <div class="col-input">
                     <label class="choice">
@@ -62,7 +62,7 @@
         <div class="row">
             <fieldset>
                 <div class="col-label">
-                    <legend>SMR</legend> 
+                    <legend class="required-field">SMR</legend> 
                 </div>
                 <div class="col-input">
                     <label class="choice">
