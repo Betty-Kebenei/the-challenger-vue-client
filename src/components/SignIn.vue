@@ -11,7 +11,7 @@
                         type="text" 
                         placeholder="Enter your email" 
                         id="username" 
-                        v-model="username" 
+                        v-model="email" 
                         required
                     />
                 </div>
