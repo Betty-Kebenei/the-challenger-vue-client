@@ -64,7 +64,7 @@
                         data-vv-as="password"
                         v-model="confirmPassword"  
                     />
-                     <span>{{ errors.first('password_confirmation') }}</span>
+                    <span>{{ errors.first('password_confirmation') }}</span>
                 </div>
 
             </div>
@@ -101,24 +101,6 @@ export default {
             confirmPassword: '',
             passwordMatchingErrors: [],
             focused: false,
-        }
-    },
-
-    watch: {
-        confirmPassword() {
-            if(!this.confirmPassword){
-               this.passwordMatchingErrors.pop(); 
-            } else {
-                if(this.password === this.confirmPassword){
-                    this.passwordMatchingErrors.pop();
-                } else if(this.password !== this.confirmPassword) {
-                    if(this.passwordMatchingErrors) {this.passwordMatchingErrors.pop()};
-                    
-                    this.passwordMatchingErrors.push('Password does not match!');
-                } else {
-                     this.passwordMatchingErrors.pop();
-                }
-            }
         }
     },
 
