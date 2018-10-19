@@ -10,11 +10,11 @@
     <div v-if="months.length > 0">
         <h1>Months</h1>
         <ul  v-for="month in months">
-        <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
-            {{ month.fromDate | moment("MMM Do") }}
-            <strong>to</strong>
-            {{ month.toDate | moment("MMM Do") }}
-        </li>
+          <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
+              {{ month.fromDate | moment("MMM Do") }}
+              <strong>to</strong>
+              {{ month.toDate | moment("MMM Do") }}
+          </li>
         </ul>
     </div>
     <div v-if="months.length < 1">

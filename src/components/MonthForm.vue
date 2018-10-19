@@ -21,7 +21,9 @@
                     v-model="toDate" />
             </div>
         </div>
-        <input type="submit" value="Submit" />
+        <div class="submit-month-form">
+            <input type="submit" value="Submit" />
+        </div>
     </form>  
 </template>
 
@@ -49,7 +51,7 @@ export default {
         var mm = newdate.getMonth() + 1;
         var y = newdate.getFullYear();
 
-        var someFormattedDate = mm + '-' + dd + '-' + y;
+        var someFormattedDate = mm + '/' + dd + '/' + y;
         this.toDate = someFormattedDate;    
       }
   },

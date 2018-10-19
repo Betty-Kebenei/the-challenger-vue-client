@@ -1,6 +1,12 @@
 <template>
     <div>
-        <h1>Details for {{ month.fromDate }} to {{ month.toDate }} month form </h1>
+        <h1>
+            <u>
+                {{ month.fromDate | moment("MMM Do") }} 
+               <i>TO</i>
+                {{ month.toDate | moment("MMM Do")}}
+            </u>
+        </h1>
         
         <div class="tabs-component">
             <tabs class="tabs-component-tabs">
