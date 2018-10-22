@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import axios from "axios"; 
+import axiosInstance from "../axiosInstance.js"; 
 import BarChart from "./BarChart.vue";
 import LineGraph from "./LineGraph.vue";
 import FaithfulnessTable from "./FaithfulnessTable.vue";
@@ -76,7 +76,7 @@ export default {
 
     methods: {
       fetchDailyData(monthId) {
-        axios
+        axiosInstance
         .get(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`)
         .then(response => {
             response.data.map(data => {

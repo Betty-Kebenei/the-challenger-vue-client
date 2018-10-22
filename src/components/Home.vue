@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import axios from "axios"; 
+import axiosInstance from "../axiosInstance.js";
 import { EventBus } from "../event-bus.js";
 import ViewAMonth from "./ViewAMonth";
 import MonthForm from "./MonthForm";
@@ -68,7 +68,7 @@ export default {
     }, 
 
     fetchMonths () {
-      axios
+      axiosInstance
         .get('http://localhost:3001/api/v1/month-form')
         .then(response => { 
             if(response.data.length > 0) {

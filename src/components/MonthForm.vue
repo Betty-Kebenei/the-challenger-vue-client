@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosInstance from "../axiosInstance.js";
 import { EventBus } from "../event-bus.js"; 
 
 export default {
@@ -58,7 +58,7 @@ export default {
 
   methods: {
       postMonth() {
-          axios
+          axiosInstance
           .post('http://localhost:3001/api/v1/month-form', {
               fromDate: this.fromDate,
               toDate: this.toDate

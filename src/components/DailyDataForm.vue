@@ -141,7 +141,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosInstance from "../axiosInstance.js";
+
 export default {
     name: 'dailyDataForm',
     data () {
@@ -161,7 +162,7 @@ export default {
 
     methods: {
       postDailyData(monthId) {
-        axios
+        axiosInstance
         .post(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`,
         { 
             chaptersMorning: this.morningChapters,
