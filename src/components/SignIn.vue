@@ -90,6 +90,7 @@ export default {
             })
             .then(response => {
                 this.$snack.success(response.data.message);
+                localStorage.setItem('access-token', response.data.token);
                 this.$router.push({name: 'home'})
             })
             .catch((error) => {

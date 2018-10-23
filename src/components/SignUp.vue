@@ -106,31 +106,6 @@ export default {
         }
     },
 
-    watch: {
-        confirmPassword() {
-            if(!confirmPassword){
-               this.errors.push('Confirm password required!') 
-            } else if(this.password !== this.confirmPassword){
-                if(this.passwordMatchingErrors) {this.passwordMatchingErrors.pop()};
-                this.passwordMatchingErrors.push('Password does not match!');
-            } else if(this.confirmPassword === ''){
-               this.passwordMatchingErrors.pop(); 
-            } else{
-                this.passwordMatchingErrors.pop();
-            }
-        },
-        email() {
-            if(!email){
-                this.errors.push('Email required!')
-            }
-        },
-        password(){
-            if(!password){
-                this.errors.push('Password required!')
-            }
-        },
-    },
-
     methods: {
         register(){
             axios
@@ -141,6 +116,7 @@ export default {
             })
             .then(response => {
                 this.$snack.success(response.data.message);
+                localStorage.setItem('access-token', response.data.token);
                 this.$router.push({name: 'home'})
             })
             .catch((error) => {

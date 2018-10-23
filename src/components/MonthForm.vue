@@ -21,12 +21,14 @@
                     v-model="toDate" />
             </div>
         </div>
-        <input type="submit" value="Submit" />
+        <div class="submit-month-form">
+            <input type="submit" value="Submit" />
+        </div>
     </form>  
 </template>
 
 <script>
-import axios from "axios";
+import axiosInstance from "../axiosInstance.js";
 import { EventBus } from "../event-bus.js"; 
 
 export default {
@@ -49,14 +51,14 @@ export default {
         var mm = newdate.getMonth() + 1;
         var y = newdate.getFullYear();
 
-        var someFormattedDate = mm + '-' + dd + '-' + y;
+        var someFormattedDate = mm + '/' + dd + '/' + y;
         this.toDate = someFormattedDate;    
       }
   },
 
   methods: {
       postMonth() {
-          axios
+          axiosInstance
           .post('http://localhost:3001/api/v1/month-form', {
               fromDate: this.fromDate,
               toDate: this.toDate
