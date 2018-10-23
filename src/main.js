@@ -7,9 +7,10 @@ import VueSnackbar from 'vue-snack';
 import VeeValidate from 'vee-validate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faFacebook, faGoogle, faTwitter)
+library.add(faFacebook, faGoogle, faTwitter, faEdit, faTrash)
 
 Vue.use(vueMoment);
 Vue.use(VueSnackbar, {});
