@@ -18,9 +18,18 @@
                 <td id="riser-time">{{i.riserTime.split('T')[1]}}</td>
                 <td id="morning-chapters">{{i.chaptersMorning}}</td>
                 <td id="other-chapters">{{i.chaptersOthers}}</td>
-                <td id="notes">{{i.notes}}</td>
-                <td id="prayer">{{i.prayer}}</td>
-                <td id="smr">{{i.smr}}</td>
+                <td id="notes">
+                    <span v-if="i.notes === true"><font-awesome-icon icon="check"/></span>
+                    <span v-else><font-awesome-icon icon="times"/></span>
+                </td>
+                <td id="prayer">
+                    <span v-if="i.prayer === true"><font-awesome-icon icon="check"/></span>
+                    <span v-else><font-awesome-icon icon="times"/></span>
+                </td>
+                <td id="smr">
+                    <span v-if="i.smr === true"><font-awesome-icon icon="check"/></span>
+                    <span v-else><font-awesome-icon icon="times"/></span>
+                </td>
                 <td id="validity">Date</td>
                 <td id="actions">
                     <font-awesome-icon icon="edit"/>
