@@ -5,7 +5,6 @@ import router from './router';
 import vueMoment from 'vue-moment';
 import VueSnackbar from 'vue-snack';
 import VeeValidate from 'vee-validate';
-import {Tabs, Tab} from 'vue-tabs-component';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -25,8 +24,6 @@ VeeValidate.Validator.extend('verify_password', {
 });
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.component('tabs', Tabs);
-Vue.component('tab', Tab);
 
 Vue.config.productionTip = false
 
