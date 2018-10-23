@@ -1,13 +1,11 @@
 <template>
     <div>
-        <h1>
-            <u>
-                {{ month.fromDate | moment("MMM Do") }} 
-               <i>TO</i>
-                {{ month.toDate | moment("MMM Do")}}
-            </u>
-        </h1>
-        
+        <h1>CHARTS, TABLES AND MORE</h1>
+        <p>
+            <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
+            <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
+        </p>
+
         <div class="tabs-component">
             <ul class="tabs-component-tabs">
                 <li class="tabs-component-tab form"  @click="openTab('form')">
