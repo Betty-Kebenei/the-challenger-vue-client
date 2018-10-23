@@ -14,7 +14,7 @@
 import Chart from 'chart.js';
 
 export default {
-    name: 'notesPie',
+    name: 'pieChart',
     props: {
       dailies: Array
     },

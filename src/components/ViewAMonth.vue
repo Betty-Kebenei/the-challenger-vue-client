@@ -30,7 +30,7 @@
                 <line-graph
                     :dailies="dailies"
                 />
-                <notes-pie
+                <pie-charts
                     :dailies="dailies"
                 />
             </section>
@@ -57,7 +57,7 @@ import LineGraph from "./LineGraph.vue";
 import PercentageTable from "./PercentageTable.vue";
 import DailyDataForm from "./DailyDataForm";
 import DetailedTable from "./DetailedTable";
-import NotesPie from "./NotesPie";
+import PieCharts from "./PieCharts";
 
 export default {
     name: 'viewAMonth',
@@ -67,7 +67,7 @@ export default {
         'line-graph': LineGraph,
         'percentage-table': PercentageTable,
         'detailed-table': DetailedTable,
-        'notes-pie': NotesPie,
+        'pie-charts': PieCharts,
     },
 
     data () {
