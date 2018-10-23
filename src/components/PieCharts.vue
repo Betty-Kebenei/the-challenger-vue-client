@@ -2,13 +2,13 @@
     <div>
         <h1>Pie Charts</h1>
 
-        <h2>Notes Pie Chart</h2>
+        <h2>Notes Pie Chart (Written?)</h2>
         <canvas id="notes-pie-chart" height="80px"></canvas>
 
-        <h2>Prayer Pie Chart</h2>
+        <h2>Prayer Pie Chart (Prayed?)</h2>
         <canvas id="prayer-pie-chart" height="80px"></canvas>
 
-        <h2>Scripture Memory Recitation Pie Chart</h2>
+        <h2>Scripture Memory Recitation Pie Chart (Recitedq?)</h2>
         <canvas id="smr-pie-chart" height="80px"></canvas>
     </div>
 </template>
@@ -51,8 +51,8 @@ export default {
                         data: [trueCount, falseCount]
                     }],
                     labels: [
-                        trueCount + ' Wroten notes',
-                        falseCount + ' Didn"t write notes',
+                        trueCount + ' Yes',
+                        falseCount + ' No',
                     ],
                 },
           });
