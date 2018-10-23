@@ -34,7 +34,7 @@
         </div>
         <div id="tables" class="tabs-contents">
             <section v-if="draw">
-                <faithfulness-table
+                <percentage-table
                     :month="month"        
                     :dailies="dailies"
                 />
@@ -51,7 +51,7 @@
 import axiosInstance from "../axiosInstance.js"; 
 import BarChart from "./BarChart.vue";
 import LineGraph from "./LineGraph.vue";
-import FaithfulnessTable from "./FaithfulnessTable.vue";
+import PercentageTable from "./PercentageTable.vue";
 import DailyDataForm from "./DailyDataForm";
 import DetailedTable from "./DetailedTable";
 
@@ -61,7 +61,7 @@ export default {
         'daily-data-form': DailyDataForm,
         'bar-chart': BarChart, 
         'line-graph': LineGraph,
-        'faithfulness-table': FaithfulnessTable,
+        'percentage-table': PercentageTable,
         'detailed-table': DetailedTable
     },
 
