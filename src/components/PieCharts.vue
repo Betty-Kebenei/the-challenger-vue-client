@@ -7,6 +7,9 @@
 
         <h2>Prayer Pie Chart</h2>
         <canvas id="prayer-pie-chart" height="80px"></canvas>
+
+        <h2>Scripture Memory Recitation Pie Chart</h2>
+        <canvas id="smr-pie-chart" height="80px"></canvas>
     </div>
 </template>
 
@@ -22,7 +25,7 @@ export default {
     mounted() {
         this.createPieChart('notes-pie-chart', this.dailies[4]);
         this.createPieChart('prayer-pie-chart', this.dailies[5]);
-        this.createPieChart('notes-pie-chart', this.dailies[4]);
+        this.createPieChart('smr-pie-chart', this.dailies[6]);
     },
 
     methods: {
