@@ -9,6 +9,9 @@
       </nav>
     </header>
     <router-view />
+    <footer>
+     <small>Authored by Betty Kebenei</small>
+    </footer>
   </div>
 </template>
 
