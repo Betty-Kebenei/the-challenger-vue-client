@@ -1,143 +1,145 @@
 <template>
-    <form @submit.prevent="postDailyData(month._id)" >
-        <h1> Daily Data Form </h1>
-        <div class="row">
-            <div class="col-label">
-                <label 
-                    for="morning-chapters" 
-                    class="required-field">
-                    Chapters Read (Morning)
-                </label>
-            </div>
-            <div class="col-input">
-                <input 
-                    type="number" 
-                    id="morning-chapters"
-                    v-model="morningChapters"
-                    min=0
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-label">
-                <label 
-                    for="other-chapters" 
-                    class="required-field">
-                    Chapters Read (Others)
-                </label>
-            </div>
-            <div class="col-input">
-                <input 
-                    type="number" 
-                    id="other-chapters" 
-                    v-model="otherChapters" 
-                    min=0
-                />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-label">
-                <label 
-                    for="riser-time" 
-                    class="required-field">
-                    Riser Time
-                </label>
-            </div>
-            <div class="col-input">
-                <input 
-                    type="datetime-local" 
-                    id="riser-time" 
-                    v-model="riserTime"
-                    required
-                />
-            </div>
-        </div>
-        <div class="row">    
-            <fieldset>
+    <div style="width:80%;">
+        <form @submit.prevent="postDailyData(month._id)" >
+            <h1> Daily Data Form </h1>
+            <div class="row">
                 <div class="col-label">
-                    <legend 
+                    <label 
+                        for="morning-chapters" 
                         class="required-field">
-                        Notes
-                    </legend> 
+                        Chapters Read (Morning)
+                    </label>
                 </div>
                 <div class="col-input">
-                    <label class="choice">
-                        <input 
-                            type="radio" 
-                            v-model="notes" 
-                            value="yes"/>
-                        Yes
-                    </label><br>
-                    <label class="choice">
-                        <input 
-                            type="radio" 
-                            v-model="notes" 
-                            value="no"/>
-                        No
-                    </label> <br>
+                    <input 
+                        type="number" 
+                        id="morning-chapters"
+                        v-model="morningChapters"
+                        min=0
+                    />
                 </div>
-            </fieldset>
-        </div>
-        <div class="row">
-            <fieldset>
+            </div>
+            <div class="row">
                 <div class="col-label">
-                    <legend 
+                    <label 
+                        for="other-chapters" 
                         class="required-field">
-                        Prayer
-                    </legend> 
+                        Chapters Read (Others)
+                    </label>
                 </div>
                 <div class="col-input">
-                    <label class="choice">
-                        <input 
-                            type="radio" 
-                            v-model="prayer" 
-                            value="yes"/>
-                        Yes
-                    </label><br>
-                    <label class="choice">
-                        <input 
-                            type="radio" 
-                            v-model="prayer" 
-                            value="no"/>
-                        No
-                    </label> <br>
+                    <input 
+                        type="number" 
+                        id="other-chapters" 
+                        v-model="otherChapters" 
+                        min=0
+                    />
                 </div>
-            </fieldset>
-        </div>
-        <div class="row">
-            <fieldset>
+            </div>
+            <div class="row">
                 <div class="col-label">
-                    <legend 
+                    <label 
+                        for="riser-time" 
                         class="required-field">
-                        SMR
-                    </legend> 
+                        Riser Time
+                    </label>
                 </div>
                 <div class="col-input">
-                    <label class="choice">
-                        <input 
-                            type="radio" 
-                            v-model="smr" 
-                            value="yes"/>
-                        Yes
-                    </label><br>
-                    <label class="choice">
-                        <input 
-                            type="radio" 
-                            v-model="smr" 
-                            value="no"/>
-                        No
-                    </label> <br>
+                    <input 
+                        type="datetime-local" 
+                        id="riser-time" 
+                        v-model="riserTime"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="row">    
+                <fieldset>
+                    <div class="col-label">
+                        <legend 
+                            class="required-field">
+                            Notes
+                        </legend> 
                     </div>
-            </fieldset>
-        </div>
-        <input 
-            type="submit" 
-            value="Submit" />
-        <input 
-            type="button" 
-            value="Cancel" 
-            @click="showDailyForm = false" />
-    </form>
+                    <div class="col-input">
+                        <label class="choice">
+                            <input 
+                                type="radio" 
+                                v-model="notes" 
+                                value="yes"/>
+                            Yes
+                        </label><br>
+                        <label class="choice">
+                            <input 
+                                type="radio" 
+                                v-model="notes" 
+                                value="no"/>
+                            No
+                        </label> <br>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row">
+                <fieldset>
+                    <div class="col-label">
+                        <legend 
+                            class="required-field">
+                            Prayer
+                        </legend> 
+                    </div>
+                    <div class="col-input">
+                        <label class="choice">
+                            <input 
+                                type="radio" 
+                                v-model="prayer" 
+                                value="yes"/>
+                            Yes
+                        </label><br>
+                        <label class="choice">
+                            <input 
+                                type="radio" 
+                                v-model="prayer" 
+                                value="no"/>
+                            No
+                        </label> <br>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row">
+                <fieldset>
+                    <div class="col-label">
+                        <legend 
+                            class="required-field">
+                            SMR
+                        </legend> 
+                    </div>
+                    <div class="col-input">
+                        <label class="choice">
+                            <input 
+                                type="radio" 
+                                v-model="smr" 
+                                value="yes"/>
+                            Yes
+                        </label><br>
+                        <label class="choice">
+                            <input 
+                                type="radio" 
+                                v-model="smr" 
+                                value="no"/>
+                            No
+                        </label> <br>
+                        </div>
+                </fieldset>
+            </div>
+            <input 
+                type="submit" 
+                value="Submit" />
+            <input 
+                type="button" 
+                value="Cancel" 
+                @click="showDailyForm = false" />
+        </form>
+    </div>
 </template>
 
 <script>
