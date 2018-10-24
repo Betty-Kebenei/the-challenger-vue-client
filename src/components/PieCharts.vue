@@ -48,7 +48,8 @@ export default {
                 type: 'pie',
                 data: {
                     datasets: [{
-                        data: [trueCount, falseCount]
+                        data: [trueCount, falseCount],
+                        backgroundColor: ['green', 'orange']
                     }],
                     labels: [
                         trueCount + ' Yes',
