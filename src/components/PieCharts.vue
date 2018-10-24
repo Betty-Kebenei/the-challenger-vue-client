@@ -1,15 +1,20 @@
 <template>
     <div>
         <h1>Pie Charts</h1>
-
-        <h2>Notes Pie Chart (Written?)</h2>
-        <canvas id="notes-pie-chart" height="80px"></canvas>
-
-        <h2>Prayer Pie Chart (Prayed?)</h2>
-        <canvas id="prayer-pie-chart" height="80px"></canvas>
-
-        <h2>Scripture Memory Recitation Pie Chart (Recitedq?)</h2>
-        <canvas id="smr-pie-chart" height="80px"></canvas>
+        <div class="row">
+            <div class="col">
+                <h2>Notes Pie Chart (Written?)</h2>
+                <canvas id="notes-pie-chart" height="80px"></canvas>
+            </div>
+            <div class="col">
+                <h2>Prayer Pie Chart (Prayed?)</h2>
+                <canvas id="prayer-pie-chart" height="80px"></canvas>
+            </div>
+            <div class="col">
+                <h2>Scripture Memory Recitation Pie Chart (Recited?)</h2>
+                <canvas id="smr-pie-chart" height="80px"></canvas>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -61,3 +66,6 @@ export default {
   }
 }
 </script>
+
+<style scoped src="../styles/pieCharts.css">
+</style>
