@@ -11,9 +11,12 @@
         <h1>Months</h1>
         <ul  v-for="month in months">
           <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
-              {{ month.fromDate | moment("MMM Do") }}
-              <strong>to</strong>
-              {{ month.toDate | moment("MMM Do") }}
+              <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
+              <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
+              <br />
+              <br />
+              <font-awesome-icon icon="edit"/>
+              <font-awesome-icon icon="trash"/>
           </li>
         </ul>
     </div>
