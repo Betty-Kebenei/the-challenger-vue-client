@@ -1,17 +1,17 @@
 <template>
-    <div>
+    <div style="width:80%;">
         <h1>Pie Charts</h1>
         <div class="row">
             <div class="col">
-                <h2>Notes Pie Chart (Written?)</h2>
+                <h2>Notes (Written?)</h2>
                 <canvas id="notes-pie-chart" height="80px"></canvas>
             </div>
             <div class="col">
-                <h2>Prayer Pie Chart (Prayed?)</h2>
+                <h2>Prayer (Prayed?)</h2>
                 <canvas id="prayer-pie-chart" height="80px"></canvas>
             </div>
             <div class="col">
-                <h2>Scripture Memory Recitation Pie Chart (Recited?)</h2>
+                <h2>Scripture Memory Recitation (Recited?)</h2>
                 <canvas id="smr-pie-chart" height="80px"></canvas>
             </div>
         </div>

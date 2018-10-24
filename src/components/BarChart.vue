@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width:80%;">
         <h1>Reading Speed Bar Chart</h1>
         <canvas id="bar-chart" height="80px"></canvas>
     </div>
@@ -55,6 +55,3 @@ export default {
   }
 }
 </script>
-
-<style scoped src="../styles/barChart.css">
-</style>
