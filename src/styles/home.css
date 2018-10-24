@@ -32,3 +32,6 @@ main {
   text-align: left;
 }
 
+.pagination-button {
+  padding: 15px;
+}

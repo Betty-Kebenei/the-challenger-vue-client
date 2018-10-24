@@ -5,6 +5,7 @@ import router from './router';
 import vueMoment from 'vue-moment';
 import VueSnackbar from 'vue-snack';
 import VeeValidate from 'vee-validate';
+import Paginate from 'vuejs-paginate'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faEdit, faTrash, faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -24,7 +25,8 @@ VeeValidate.Validator.extend('verify_password', {
   }
 });
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('paginate', Paginate);
 
 Vue.config.productionTip = false
 
