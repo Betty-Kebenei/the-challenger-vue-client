@@ -30,13 +30,20 @@
                 <line-graph
                     :dailies="dailies"
                 />
+                <pie-charts
+                    :dailies="dailies"
+                />
             </section>
         </div>
         <div id="tables" class="tabs-contents">
             <section v-if="draw">
-                <faithfulness-table
+                <percentage-table
                     :month="month"        
                     :dailies="dailies"
+                />
+
+                <detailed-table 
+                    :dailydata="dailyData"
                 />
             </section>
         </div>
@@ -47,8 +54,10 @@
 import axiosInstance from "../axiosInstance.js"; 
 import BarChart from "./BarChart.vue";
 import LineGraph from "./LineGraph.vue";
-import FaithfulnessTable from "./FaithfulnessTable.vue";
+import PercentageTable from "./PercentageTable.vue";
 import DailyDataForm from "./DailyDataForm";
+import DetailedTable from "./DetailedTable";
+import PieCharts from "./PieCharts";
 
 export default {
     name: 'viewAMonth',
@@ -56,12 +65,15 @@ export default {
         'daily-data-form': DailyDataForm,
         'bar-chart': BarChart, 
         'line-graph': LineGraph,
-        'faithfulness-table': FaithfulnessTable
+        'percentage-table': PercentageTable,
+        'detailed-table': DetailedTable,
+        'pie-charts': PieCharts,
     },
 
     data () {
         return {
         showDailyForm: false,
+        dailyData: [],
         dailies: [],
         morningChapters: [],
         otherChapters: [],
@@ -87,6 +99,7 @@ export default {
         axiosInstance
         .get(`http://localhost:3001/api/v1/month-form/${monthId}/daily-data`)
         .then(response => {
+            this.dailyData = response.data;
             response.data.map(data => {
                 this.dates.push(data.riserTime.split('T')[0]);
                 this.morningChapters.push(data.chaptersMorning);

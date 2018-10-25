@@ -1,0 +1,8 @@
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}

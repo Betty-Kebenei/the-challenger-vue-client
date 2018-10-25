@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width:80%;">
         <h1>Early Riser Line Graph</h1>
         <canvas id="line-chart" height="80px"></canvas>
     </div>

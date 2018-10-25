@@ -1,28 +1,61 @@
 <template>
   <div>
     <div class="leftNav">
-    <button
-        @click="showMonthForm = !showMonthForm"
-    >Add Month Form</button>
-    <div v-show="showMonthForm">
-        <month-form :months="months"/>
-    </div>
-    <div v-if="months.length > 0">
-        <h1>Months</h1>
-        <ul  v-for="month in months">
-          <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
-              {{ month.fromDate | moment("MMM Do") }}
-              <strong>to</strong>
-              {{ month.toDate | moment("MMM Do") }}
-          </li>
-        </ul>
-    </div>
-    <div v-if="months.length < 1">
-        <p>{{error}}</p>
-    </div>
+      <button
+          @click="showMonthForm = !showMonthForm"
+      >Add Month Form</button>
+      
+      <div v-show="showMonthForm">
+          <month-form :months="months"/>
+      </div>
+
+      <div v-if="months.length > 0">
+          <h1>Months</h1>
+          <ul  v-for="month in paginatedData">
+            <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
+                <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
+                <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
+                <br />
+                <br />
+                <font-awesome-icon icon="edit"/>
+                <font-awesome-icon icon="trash"/>
+            </li>
+          </ul>
+      </div>
+
+      <br />
+
+      <div>
+        <button 
+          class="pagination-button" 
+          @click="prevPage"
+          :disabled="pageNumber==0"
+          >
+          &laquo;
+        </button>
+        <button 
+          class="pagination-button" 
+          v-for="i in pageCount"
+          @click="pageNumber = i"
+          >
+          {{i + 1}}
+        </button>
+        <button 
+          class="pagination-button" 
+          @click="nextPage"
+          :disabled="pageNumber >= pageCount -1"
+          >
+          &raquo;
+        </button>
+      </div>
+
+      <div v-if="months.length < 1">
+          <p>{{error}}</p>
+      </div>
+
     </div>
     <main v-if="showCharts">
-     <view-month :month="month" />
+      <view-month :month="month" />
     </main>
   </div>
 </template>
@@ -42,6 +75,8 @@ export default {
       showMonthForm: false,
       error: '',
       showCharts: false,
+      pageNumber: 0,
+      size: 5,
     }
   },
 
@@ -59,6 +94,20 @@ export default {
 
   mounted () {
     this.fetchMonths();
+  },
+
+  computed: {
+    pageCount(){
+      let len = this.months.length,
+          size = this.size;
+      return Math.floor(len/size);
+    },
+
+    paginatedData(){
+      const start = this.pageNumber * this.size,
+            end = start + this.size;
+      return this.months.slice(start, end);
+    }
   },
 
   methods: {
@@ -82,6 +131,15 @@ export default {
             })
         .catch((error) => { })
     },
+
+    nextPage(){
+         this.pageNumber++;
+    },
+
+    prevPage(){
+      this.pageNumber--;
+    },
+
   }
 }
 </script>

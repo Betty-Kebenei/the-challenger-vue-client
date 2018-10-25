@@ -9,8 +9,11 @@
 }
 
 .leftNav {
+  position: absolute;
+  top: 90px;
   max-width: 20%;
   float: left;
+  z-index: -1;
 }
 
 .leftNav ul {
@@ -27,8 +30,15 @@
 }
 
 main {
+  position: absolute;
+  top: 90px;
+  left: 20%;
   width: 80%;
   float: right;
   text-align: left;
+  z-index: -1;
 }
 
+.pagination-button {
+  padding: 15px;
+}
