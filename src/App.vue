@@ -5,6 +5,7 @@
       <nav>
         <router-link to="/signup">SIGNUP</router-link>
         <router-link to="/signin">SIGNIN</router-link>
+        <router-link to="/profile">PROFILE</router-link>
         <router-link to="/">HOME</router-link>
       </nav>
     </header>
