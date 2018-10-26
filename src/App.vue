@@ -2,13 +2,38 @@
   <div id="app">
    <header>
       <img src="./assets/logo.png">
-      <nav>
+      <nav v-show="!token">
         <router-link to="/signup">SIGNUP</router-link>
         <router-link to="/signin">SIGNIN</router-link>
-        <router-link to="/profile">PROFILE</router-link>
-        <router-link to="/">HOME</router-link>
       </nav>
-      <button @click="logoutUser">Logout</button>
+
+      <div class="caret" v-show="token">
+        <font-awesome-icon 
+          v-show="token && !showDropDown"
+          icon='caret-down'
+         
+          size="2x"
+          @click="showDropDown = true"
+        />
+        <font-awesome-icon 
+          v-show="token && showDropDown"
+          icon='caret-up'
+          
+          size="2x"
+          @click="showDropDown = false"
+        />
+        <div v-show="showDropDown" class="drop-down">
+          <a href="#" @click="profile">Your Profile</a><br/>
+          <a href="#" @click="logoutUser">Logout</a>
+        </div>
+      </div>
+
+      <div class="user-icon" v-show="token">
+        <font-awesome-icon icon="user" size='4x'/>
+      </div>
+
+      
+      
     </header>
     <router-view />
     <footer>
@@ -26,10 +51,28 @@ export default {
     'home': Home,
   },
 
+  data(){
+    return {
+      token: false,
+      showDropDown: true
+    }
+  },
+
+  mounted(){
+    const accessToken = localStorage.getItem('access-token');
+    if(accessToken){
+      this.token = true;
+    }
+  },
+
   methods: {
     logoutUser(){
       localStorage.clear();
       this.$router.push({name: 'signin'})
+    },
+
+    profile(){
+      this.$router.push({name: 'profile'})
     }
   }
 }

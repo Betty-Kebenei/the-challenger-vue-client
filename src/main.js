@@ -8,10 +8,29 @@ import VeeValidate from 'vee-validate';
 import Paginate from 'vuejs-paginate'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faEdit, faTrash, faTimes, faCheck, faUser } from '@fortawesome/free-solid-svg-icons'
+import {
+  faEdit,
+  faTrash,
+  faTimes,
+  faCheck,
+  faUser,
+  faCaretDown,
+  faCaretUp
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faFacebook, faGoogle, faTwitter, faEdit, faTrash, faTimes, faCheck, faUser)
+library.add(
+  faFacebook,
+  faGoogle,
+  faTwitter,
+  faEdit,
+  faTrash,
+  faTimes,
+  faCheck,
+  faUser,
+  faCaretDown,
+  faCaretUp
+  )
 
 Vue.use(vueMoment);
 Vue.use(VueSnackbar, {});

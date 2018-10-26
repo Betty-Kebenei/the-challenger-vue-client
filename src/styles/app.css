@@ -54,3 +54,25 @@ nav a {
     font-size: 1.5rem;
     float: right;
 }
+
+.user-icon {
+    float: right;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px; 
+}
+
+.caret {
+    float: right; 
+    color: white;
+    margin-right: 10%;
+    margin-top: 1%;
+}
+
+.drop-down{
+    display: block;
+    text-decoration: none;
+    color: white;
+    float: right;
+    z-index: 2;
+}
