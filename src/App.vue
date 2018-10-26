@@ -8,6 +8,7 @@
         <router-link to="/profile">PROFILE</router-link>
         <router-link to="/">HOME</router-link>
       </nav>
+      <button @click="logoutUser">Logout</button>
     </header>
     <router-view />
     <footer>
@@ -23,6 +24,13 @@ export default {
   name: 'app',
   components: {
     'home': Home,
+  },
+
+  methods: {
+    logoutUser(){
+      localStorage.clear();
+      this.$router.push({name: 'signin'})
+    }
   }
 }
 </script>
