@@ -131,6 +131,32 @@
                         </div>
                 </fieldset>
             </div>
+            <div class="row">
+                <fieldset>
+                    <div class="col-label">
+                        <legend 
+                            class="required-field">
+                            Is this today's data?
+                        </legend> 
+                    </div>
+                    <div class="col-input">
+                        <label class="choice">
+                            <input 
+                                type="radio" 
+                                v-model="validity" 
+                                value="yes"/>
+                            Yes
+                        </label><br>
+                        <label class="choice">
+                            <input 
+                                type="radio" 
+                                v-model="validity" 
+                                value="no"/>
+                            No
+                        </label> <br>
+                        </div>
+                </fieldset>
+            </div>
             <input 
                 type="submit" 
                 value="Submit" />
@@ -155,6 +181,7 @@ export default {
             notes: false,
             prayer: false,
             smr: false,
+            validity: false
         }
     },
     
@@ -172,7 +199,8 @@ export default {
             riserTime: this.riserTime,
             notes: this.notes,
             prayer: this.prayer,
-            smr: this.smr
+            smr: this.smr,
+            dataValid: this.validity,
         })
         .then((response) => {
             this.$snack.success('Daily data Successfully added!');
