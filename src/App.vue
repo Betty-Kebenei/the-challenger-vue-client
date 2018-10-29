@@ -11,24 +11,24 @@
         <font-awesome-icon 
           v-show="token && !showDropDown"
           icon='caret-down'
-         
           size="2x"
           @click="showDropDown = true"
         />
         <font-awesome-icon 
           v-show="token && showDropDown"
           icon='caret-up'
-          
           size="2x"
           @click="showDropDown = false"
         />
         <div v-show="showDropDown" class="drop-down">
-          <a href="#" @click="profile">Your Profile</a><br/>
-          <a href="#" @click="logoutUser">Logout</a>
+          <ul>
+            <li @click="profile">My Profile</li>
+            <li @click="logoutUser">Sign Out</li>
+          </ul>
         </div>
       </div>
 
-      <div class="user-icon" v-show="token">
+      <div class="user-icon" v-show="token" @click="showDropDown = true">
         <font-awesome-icon icon="user" size='4x'/>
       </div>
 
@@ -54,7 +54,7 @@ export default {
   data(){
     return {
       token: false,
-      showDropDown: true
+      showDropDown: false
     }
   },
 
