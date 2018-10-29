@@ -144,5 +144,5 @@ export default {
 }
 </script>
 
-<style src="../styles/home.css">
+<style scoped src="../styles/home.css">
 </style>

@@ -9,13 +9,13 @@
 
       <div class="caret" v-show="token">
         <font-awesome-icon 
-          v-show="token && !showDropDown"
+          v-show="!showDropDown"
           icon='caret-down'
           size="2x"
           @click="showDropDown = true"
         />
         <font-awesome-icon 
-          v-show="token && showDropDown"
+          v-show="showDropDown"
           icon='caret-up'
           size="2x"
           @click="showDropDown = false"
@@ -32,12 +32,10 @@
         <font-awesome-icon icon="user" size='4x'/>
       </div>
 
-      
-      
     </header>
     <router-view />
-    <footer>
-     <small>Authored by Betty Kebenei</small>
+     <footer>
+      <small>Authored by Betty Kebenei</small>
     </footer>
   </div>
 </template>
@@ -65,10 +63,18 @@ export default {
     }
   },
 
+  beforeUpdate(){
+    const accessToken = localStorage.getItem('access-token');
+    if(accessToken){
+      this.token = true;
+    }
+  },
+
   methods: {
     logoutUser(){
       localStorage.clear();
       this.$router.push({name: 'signin'})
+      this.token = false;
     },
 
     profile(){
