@@ -25,7 +25,7 @@
 
       <br />
 
-      <div>
+      <div v-if="months.length > 5">
         <button 
           class="pagination-button" 
           @click="prevPage"
@@ -56,6 +56,21 @@
     </div>
     <main v-if="showCharts">
       <view-month :month="month" />
+    </main>
+
+    <main v-if="months.length < 1">
+        <h1>So, what next?</h1>
+        <p>You can add <strong>28 days month forms</strong> to get started.</p>
+
+        <h2>Intructions</h2>
+        <ul>
+          <li>Click on the <i><b>Add Month Form</b></i> button.</li>
+          <li>Enter the <b>From Date</b>.</li>
+          <li>The <b>To Date</b> will be automcatically generated for you.</li>
+          <li>Click submit button to complete submission.</li>
+        </ul>
+
+        <p><strong>NOTE:</strong> Once you add a month form, you can add data daily to keep track of you daily performance in CBR.</p>
     </main>
   </div>
 </template>

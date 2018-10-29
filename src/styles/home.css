@@ -42,3 +42,7 @@ main {
 .pagination-button {
   padding: 15px;
 }
+
+button {
+  padding: 10px;
+}
