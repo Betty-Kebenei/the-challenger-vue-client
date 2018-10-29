@@ -94,7 +94,7 @@ export default {
                 this.$router.push({name: 'home'})
             })
             .catch((error) => {
-                this.$snack.danger(error.response.data);
+                this.$snack.danger(error.response.data.message);
             });
         },
     },

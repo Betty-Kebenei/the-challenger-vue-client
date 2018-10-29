@@ -54,3 +54,50 @@ nav a {
     font-size: 1.5rem;
     float: right;
 }
+
+.user-icon {
+    position: fixed;
+    top: 0;
+    right: 100px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px; 
+    z-index: -2;
+}
+
+.caret {
+    position: fixed;
+    top: 20px;
+    right: -25px;
+    color: #fff;
+    margin-right: 100px;
+}
+
+.drop-down{
+    position: fixed;
+    top: 0px;
+    right: 100px;
+    color: black;
+    z-index: 2;
+    width: 150px;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,0.25);
+    min-height: 100px;
+    border-radius: 5%;
+    padding: 10px 0;
+}
+
+.drop-down ul{
+    font-size: 1.5rem;
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+}
+.drop-down ul li{
+    padding: 15px;
+    margin: 0;
+}
+
+.drop-down ul li:hover {
+    background-color:grey;
+}

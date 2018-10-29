@@ -1,0 +1,23 @@
+.user-profile {
+    position: relative;
+    box-shadow: 0 0 1px rgba(0,0,0,0.25);
+    width: 60%;
+    margin: auto;
+    min-height: 100vw;
+    padding: 5%;
+    z-index: -2;
+}
+
+.user-icon {
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: gainsboro;
+    padding-top: 20px;
+}
+
+.user-name, .contacts, .bio{
+    text-align: center; 
+}
