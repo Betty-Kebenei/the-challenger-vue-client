@@ -171,15 +171,19 @@ export default {
     },
 
     deleteAMonth(monthId) {
-      axiosInstance
-        .delete(`http://localhost:3001/api/v1/month-form/${monthId}`)
-        .then(response => { 
-          this.$snack.success(response.data.message);
-          this.fetchMonths();
+      this.$dialog.confirm('Please confirm to continue with the delete action')
+        .then((dialog) => {
+          axiosInstance
+            .delete(`http://localhost:3001/api/v1/month-form/${monthId}`)
+            .then(response => { 
+              this.$snack.success(response.data.message);
+              this.fetchMonths();
+            })
+            .catch((error) => {
+              this.$snack.danger(error.response.data);
+            })
         })
-        .catch((error) => {
-          this.$snack.danger(error.response.data);
-         })
+        .catch(() => {});
     },
   }
 }
