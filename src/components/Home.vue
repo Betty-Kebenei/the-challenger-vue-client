@@ -12,14 +12,14 @@
       <div v-if="months.length > 0">
           <h1>Months</h1>
           <ul  v-for="month in paginatedData">
-            <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
-                <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
-                <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
-                <br />
-                <br />
-                <font-awesome-icon icon="edit" />
-                <font-awesome-icon icon="trash" @click="deleteAMonth(month._id)"/>
-            </li>
+              <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
+                  <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
+                  <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
+                  <br />
+                  <br />
+                  <font-awesome-icon icon="edit" />
+                  <font-awesome-icon icon="trash" @click="deleteAMonth(month._id)"/>
+              </li>
           </ul>
       </div>
 
@@ -155,12 +155,12 @@ export default {
       this.pageNumber--;
     },
 
-
     deleteAMonth(monthId) {
       axiosInstance
         .delete(`http://localhost:3001/api/v1/month-form/${monthId}`)
         .then(response => { 
           this.$snack.success(response.data.message);
+          this.fetchMonths();
         })
         .catch((error) => {
           this.$snack.danger(error.response.data);
