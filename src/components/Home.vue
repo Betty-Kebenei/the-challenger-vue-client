@@ -17,8 +17,8 @@
                 <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
                 <br />
                 <br />
-                <font-awesome-icon icon="edit"/>
-                <font-awesome-icon icon="trash"/>
+                <font-awesome-icon icon="edit" />
+                <font-awesome-icon icon="trash" @click="deleteAMonth(month._id)"/>
             </li>
           </ul>
       </div>
@@ -154,6 +154,19 @@ export default {
     prevPage(){
       this.pageNumber--;
     },
+
+
+    deleteAMonth(monthId) {
+      axiosInstance
+        .delete(`http://localhost:3001/api/v1/month-form/${monthId}`)
+        .then(response => { 
+          this.$snack.success(response.data.message);
+        })
+        .catch((error) => {
+          this.$snack.danger(error.response.data);
+         })
+    },
+
 
   }
 }
