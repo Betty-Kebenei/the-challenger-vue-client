@@ -23,6 +23,10 @@
             <daily-data-form :month="month"/>
         </div>
         <div id="charts" class="tabs-contents">
+            <section v-if="!draw" class="no-daily-data">
+                <p>This tab is supposed to show visual representation of my daily record but I don't have any daily data yet to visualize.</p>
+                <p>I should add daily data using the <strong>Daily Data Form</strong> in the <strong>Add Daily Data tab</strong> to get started.</p>
+            </section>
             <section v-if="draw">
                 <bar-chart
                     :dailies="dailies"
@@ -36,13 +40,10 @@
             </section>
         </div>
         <div id="tables" class="tabs-contents">
-            <section v-if="draw">
-                <percentage-table
-                    :month="month"        
-                    :dailies="dailies"
-                />
+            <section>
+                <percentage-table />
 
-                <detailed-table 
+                <detailed-table v-if="draw"
                     :dailydata="dailyData"
                 />
             </section>
