@@ -12,6 +12,7 @@
       <div v-if="months.length > 0">
           <h1>Months</h1>
           <ul  v-for="month in paginatedData">
+            <transition name="bounce">
               <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
                   <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
                   <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
@@ -20,6 +21,7 @@
                   <font-awesome-icon icon="edit" />
                   <font-awesome-icon icon="trash" @click="deleteAMonth(month._id)"/>
               </li>
+             </transition>
           </ul>
       </div>
 
