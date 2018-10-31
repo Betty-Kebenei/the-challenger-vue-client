@@ -3,23 +3,25 @@
     <div class="leftNav">
       <button
           @click="showMonthForm = !showMonthForm"
-      >Add Month Form</button>
+      >{{editing ? 'Edit Month Form' : 'Add Month Form'}}</button>
       
-      <div v-show="showMonthForm">
-          <month-form :months="months"/>
+      <div v-if="showMonthForm">
+          <month-form :month="month" :editing="editing"/>
       </div>
 
       <div v-if="months.length > 0">
           <h1>Months</h1>
           <ul  v-for="month in paginatedData">
-            <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
-                <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
-                <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
-                <br />
-                <br />
-                <font-awesome-icon icon="edit"/>
-                <font-awesome-icon icon="trash"/>
-            </li>
+            <transition name="bounce">
+              <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
+                  <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
+                  <i><strong>TO:</strong><span>{{ month.toDate | moment("MMM Do") }}</span></i>
+                  <br />
+                  <br />
+                  <font-awesome-icon icon="edit" @click="OpenEditForm(month)"/>
+                  <font-awesome-icon icon="trash" @click="deleteAMonth(month._id)"/>
+              </li>
+             </transition>
           </ul>
       </div>
 
@@ -92,6 +94,7 @@ export default {
       showCharts: false,
       pageNumber: 0,
       size: 5,
+      editing: false
     }
   },
 
@@ -104,6 +107,12 @@ export default {
       EventBus.$on("added-form", month => {
       this.months.push(month);
       this.showMonthForm = false;
+    });
+
+    EventBus.$on("update-form", () => {
+      this.showMonthForm = false;
+      this.fetchMonths();
+      this.editing = false;
     });
   },
 
@@ -155,6 +164,27 @@ export default {
       this.pageNumber--;
     },
 
+    OpenEditForm(month){
+      this.month = month;
+      this.showMonthForm = true;
+      this.editing = true;
+    },
+
+    deleteAMonth(monthId) {
+      this.$dialog.confirm('Please confirm to continue with the delete action')
+        .then((dialog) => {
+          axiosInstance
+            .delete(`http://localhost:3001/api/v1/month-form/${monthId}`)
+            .then(response => { 
+              this.$snack.success(response.data.message);
+              this.fetchMonths();
+            })
+            .catch((error) => {
+              this.$snack.danger(error.response.data);
+            })
+        })
+        .catch(() => {});
+    },
   }
 }
 </script>

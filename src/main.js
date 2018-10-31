@@ -5,7 +5,9 @@ import router from './router';
 import vueMoment from 'vue-moment';
 import VueSnackbar from 'vue-snack';
 import VeeValidate from 'vee-validate';
-import Paginate from 'vuejs-paginate'
+import Paginate from 'vuejs-paginate';
+import VuejsDialog from "vuejs-dialog";
+import 'vuejs-dialog/dist/vuejs-dialog.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import {
@@ -35,6 +37,7 @@ library.add(
 Vue.use(vueMoment);
 Vue.use(VueSnackbar, {});
 Vue.use(VeeValidate);
+Vue.use(VuejsDialog);
 
 VeeValidate.Validator.extend('verify_password', {
   getMessage: field => `The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc)`,

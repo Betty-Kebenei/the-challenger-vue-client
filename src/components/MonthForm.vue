@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="postMonth">
+    <form @submit.prevent="editing ? UpdateAMonth(month._id) : postMonth() ">
         <h1> Month Form </h1>
         <div class="row">
             <div class="col-label">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="submit-month-form">
-            <input type="submit" value="Submit" />
+            <input type="submit" :value="editing ? 'Edit' : 'Add New' " />
         </div>
     </form>  
 </template>
@@ -37,6 +37,18 @@ export default {
       return {
           fromDate: '',
           toDate: ''
+      }
+  },
+
+  props: {
+      month: Object,
+      editing: Boolean
+  },
+
+  mounted(){
+      if(this.editing){
+          this.fromDate = this.month.fromDate;
+          this.toDate = this.month.toDate;
       }
   },
 
@@ -71,6 +83,21 @@ export default {
               this.$snack.danger(error.response.data);
           })
       },
+
+      UpdateAMonth(monthId) {
+        axiosInstance
+            .put(`http://localhost:3001/api/v1/month-form/${monthId}`, {
+                fromDate: this.fromDate,
+                toDate: this.toDate
+            })
+            .then(response => { 
+                EventBus.$emit("update-form");
+                this.$snack.success(response.data.message);
+            })
+                .catch((error) => {
+                this.$snack.danger(error.response.data);
+            })
+        },
   }
 }
 </script>
