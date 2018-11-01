@@ -66,3 +66,15 @@ button {
       transform: scale(1);
   }
 }
+
+form {
+  width: 100%;
+  margin: 10px 0;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  font-size: 1.3em;
+  border-radius: 40px;
+}
