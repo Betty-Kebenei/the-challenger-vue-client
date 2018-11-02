@@ -203,7 +203,15 @@ export default {
             dataValid: this.validity,
         })
         .then((response) => {
-            this.$snack.success('Daily data Successfully added!');
+            this.$snack.success(response.data.message);
+            this.morningChapters = 0;
+            this.otherChapters = 0;
+            this.riserTime = '';
+            this.notes = false;
+            this.prayer = false;
+            this.smr = false;
+            this.validity = false;
+            EventBus.$emit("add-daily-data", response.data.daily);
         })
         .catch(error => { 
             this.$snack.danger(error.response.data);
