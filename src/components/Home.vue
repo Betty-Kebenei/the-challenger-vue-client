@@ -9,9 +9,13 @@
           <month-form :month="month" :editing="editing"/>
       </div>
 
+      <form>
+        <input type="text" placeholder="Search month form..." v-model="findMonth" >
+      </form>
+
       <div v-if="months.length > 0">
           <h1>Months</h1>
-          <ul  v-for="month in paginatedData">
+          <ul  v-for="month in (findMonth.length > 0 ? filteredMonthForms : paginatedData)">
             <transition name="bounce">
               <li :key="month._id"  v-on:click="fetchMonthDetails(month)">
                   <i><strong>FROM:</strong><span>{{ month.fromDate | moment("MMM Do") }}</span></i>
@@ -94,7 +98,8 @@ export default {
       showCharts: false,
       pageNumber: 0,
       size: 5,
-      editing: false
+      editing: false,
+      findMonth: ''
     }
   },
 
@@ -131,6 +136,11 @@ export default {
       const start = this.pageNumber * this.size,
             end = start + this.size;
       return this.months.slice(start, end);
+    },
+
+    filteredMonthForms() {
+      let filter = new RegExp(this.findMonth, 'i')
+      return this.months.filter(form => form.fromDate||toDate.match(filter))
     }
   },
 
